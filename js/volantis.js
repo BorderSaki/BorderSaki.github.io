@@ -438,7 +438,7 @@
                     return b.indexOf(e) > -1 ? '<input name="' + e + '" placeholder="' + t.locale.head[e] + '" class="v' + e + ' vinput" type="' + n + '">' : ""
                 });
                 t.placeholder = e.placeholder || "Just Go Go",
-                t.el.innerHTML = '<div class="vwrap"><div class="vheader item' + B.length + '">' + B.join("") + '</div><div class="vedit"><textarea id="veditor" class="veditor vinput" placeholder="' + t.placeholder + '"></textarea><div class="vctrl"><span class="vemoji-btn">' + t.locale.ctrl.emoji + '</span> | <span class="vpreview-btn">' + t.locale.ctrl.preview + '</span></div><div class="vemojis" style="display:none;"></div><div class="vinput vpreview" style="display:none;"></div></div><div class="vcontrol"><div class="col col-20" title="Markdown is supported"><a href="https://segmentfault.com/markdown" target="_blank"><svg class="markdown" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M14.85 3H1.15C.52 3 0 3.52 0 4.15v7.69C0 12.48.52 13 1.15 13h13.69c.64 0 1.15-.52 1.15-1.15v-7.7C16 3.52 15.48 3 14.85 3zM9 11H7V8L5.5 9.92 4 8v3H2V5h2l1.5 2L7 5h2v6zm2.99.5L9.5 8H11V5h2v3h1.5l-2.51 3.5z"></path></svg></a></div><div class="col col-80 text-right"><button type="button" title="Cmd|Ctrl+Enter" class="vsubmit vbtn">' + t.locale.ctrl.reply + '</button></div></div><div style="display:none;" class="vmark"></div></div><div class="vinfo" style="display:none;"><div class="vcount col"></div></div><div class="vlist"></div><div class="vempty" style="display:none;"></div><div class="vpage txt-center"></div><div class="info"><div class="power txt-right">Powered By <a href="https://valine.js.org" target="_blank">Valine</a><br>v' + o + "</div></div>";
+                t.el.innerHTML = '<div class="vwrap"><div class="vheader item' + B.length + '">' + B.join("") + '</div><div class="vedit"><textarea id="veditor" class="veditor vinput" placeholder="' + t.placeholder + '"></textarea><div class="vctrl"><span class="vemoji-btn">' + t.locale.ctrl.emoji + '</span> | <span class="vpreview-btn">' + t.locale.ctrl.preview + '</span></div><div class="vemojis" style="display:none;"></div><div class="vinput vpreview" style="display:none;"></div></div><div class="vcontrol"><div class="col col-20" title="Markdown is supported"><a href="https://segmentfault.com/markdown" target="_blank"><svg class="markdown" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M14.85 3H1.15C.52 3 0 3.52 0 4.15v7.69C0 12.48.52 13 1.15 13h13.69c.64 0 1.15-.52 1.15-1.15v-7.7C16 3.52 15.48 3 14.85 3zM9 11H7V8L5.5 9.92 4 8v3H2V5h2l1.5 2L7 5h2v6zm2.99.5L9.5 8H11V5h2v3h1.5l-2.51 3.5z"/></svg></a></div><div class="col col-80 text-right"><button type="button" title="Cmd|Ctrl+Enter" class="vsubmit vbtn">' + t.locale.ctrl.reply + '</button></div></div><div style="display:none;" class="vmark"></div></div><div class="vinfo" style="display:none;"><div class="vcount col"></div></div><div class="vlist"></div><div class="vempty" style="display:none;"></div><div class="vpage txt-center"></div><div class="info"><div class="power txt-right">Powered By <a href="https://valine.js.org" target="_blank">Valine</a><br>v' + o + "</div></div>";
                 var j = u.find(t.el, ".vempty");
                 t.nodata = {
                     show: function(e) {
@@ -780,7 +780,7 @@
                     class: "vcard",
                     id: e.id
                 })
-                  , o = m.hide ? "" : '<img class="vimg" src="' + (m.cdn + a(e.get("mail")) + m.params) + '">'
+                  , o = m.hide ? "" : '<img class="vimg" src="' + (m.cdn + a(e.get(" mail")) + m.params) '">'
                   , s = e.get("ua") || ""
                   , l = "";
                 if (s) {
@@ -789,8 +789,8 @@
                 }
                 var p = ""
                   , f = e.get("link") || "";
-                p = f ? '<a class="vnick" rel="nofollow" href="' + f + '" target="_blank" >' + e.get("nick") + "</a>" : '<span class="vnick">' + e.get("nick") + "</span>",
-                i.innerHTML = o + '\n            <div class="vh" rootid=' + (e.get("rid") || e.id) + '>\n                <div class="vhead">' + p + " " + l + '</div>\n                <div class="vmeta">\n                    <span class="vtime">' + c(e.get("insertedAt") || e.createdAt, t.locale) + '</span>\n                    <span class="vat">' + t.locale.ctrl.reply + '</span>\n                </div>\n                <div class="vcontent">\n                    ' + g(e.get("comment")) + "\n                </div>\n            </div>";
+                p = f ? '<a class="vnick" rel="nofollow" href="' + f + '" target="_blank">' + e.get("nick") + "</a>" : '<span class="vnick">' + e.get("nick") + "</span>",
+                i.innerHTML = o + '\n            <div class="vh" rootid=" + (e.get("rid") || e.id) + ">\n                <div class="vhead">' + p + " " + l + '</div>\n                <div class="vmeta">\n                    <span class="vtime">' + c(e.get("insertedAt") || e.createdAt, t.locale) + '</span>\n                    <span class="vat">' + t.locale.ctrl.reply + '</span>\n                </div>\n                <div class="vcontent">\n                    ' + g(e.get("comment")) + "\n                </div>\n            </div>";
                 for (var h = u.find(i, ".vat"), v = u.findAll(i, "a"), b = 0, x = v.length; b < x; b++) {
                     var y = v[b];
                     y && -1 == (u.attr(y, "class") || "").indexOf("at") && u.attr(y, {
@@ -911,7 +911,7 @@
                     var r = R.pid || R.rid;
                     n.set("rid", R.rid),
                     n.set("pid", r),
-                    v.comment = v.comment.replace("<p>", '<p><a class="at" href="#' + r + '">' + R.at + "</a> , ")
+                    v.comment = v.comment.replace("<p>", '</p><p><a class="at" href="#' + r + '">' + R.at + "</a> , ")
                 }
                 for (var i in v)
                     if (v.hasOwnProperty(i)) {
@@ -961,7 +961,7 @@
                   , s = a[Math.floor(3 * Math.random())]
                   , l = a[Math.floor(3 * Math.random())]
                   , c = "" + r + s + i + l + o
-                  , d = c + " = <input class='vcode vinput' >";
+                  , d = c + " = <input class="vcode vinput">";
                 t.alert.show({
                     type: 1,
                     text: d,
@@ -1238,8 +1238,7 @@
         var r = {}
           , i = {
             "&": "&amp;",
-            "<": "&lt;",
-            ">": "&gt;",
+            "<": "&lt;", ">": "&gt;",
             '"': "&quot;",
             "'": "&#39;",
             "`": "&#x60;",
@@ -1595,17 +1594,7 @@
                 var a = 0
                   , s = {}
                   , l = /[\u4E00-\u9FFF\u3400-\u4dbf\uf900-\ufaff\u3040-\u309f\uac00-\ud7af\u0400-\u04FF]+|\w+/
-                  , c = /</
-                  , d = new RegExp("(" + l.source + "|" + c.source + ")|(" + t().source + ")","gmi");
-                return r.replace(d, function(t, n, r) {
-                    if (r)
-                        return e(r);
-                    if ("<" === n)
-                        return "&lt;";
-                    var i;
-                    s[n] ? i = s[n] : (i = o[a],
-                    s[n] = i);
-                    var l = '<span style="color: #' + i + '">' + n + "</span>";
+                  , c = /' + n + "";
                     return a = ++a % o.length,
                     l
                 })
@@ -1646,7 +1635,7 @@
                     this.renderer.options = this.options
                 }
                 function s(e, t) {
-                    return e.replace(t ? /&/g : /&(?!#?\w+;)/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;")
+                    return e.replace(t ? /&/g : /&(?!#?\w+;)/g, "&amp;").replace(//g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;")
                 }
                 function l(e) {
                     return e.replace(/&(#(?:\d+)|(?:#x[0-9A-Fa-f]+)|(?:\w+));?/gi, function(e, t) {
@@ -1757,22 +1746,11 @@
                     nptable: u,
                     blockquote: /^( {0,3}> ?(paragraph|[^\n]*)(?:\n|$))+/,
                     list: /^( *)(bull) [\s\S]+?(?:hr|def|\n{2,}(?! )(?!\1bull )\n*|\s*$)/,
-                    html: "^ {0,3}(?:<(script|pre|style)[\\s>][\\s\\S]*?(?:</\\1>[^\\n]*\\n+|$)|comment[^\\n]*(\\n+|$)|<\\?[\\s\\S]*?\\?>\\n*|<![A-Z][\\s\\S]*?>\\n*|<!\\[CDATA\\[[\\s\\S]*?\\]\\]>\\n*|</?(tag)(?: +|\\n|/?>)[\\s\\S]*?(?:\\n{2,}|$)|<(?!script|pre|style)([a-z][\\w-]*)(?:attribute)*? */?>(?=\\h*\\n)[\\s\\S]*?(?:\\n{2,}|$)|</(?!script|pre|style)[a-z][\\w-]*\\s*>(?=\\h*\\n)[\\s\\S]*?(?:\\n{2,}|$))",
+                    html: "^ {0,3}(?:<(script|pre|style)[\\s>][\\s\\S]*?(?:[^\\n]*\\n+|$)|comment[^\\n]*(\\n+|$)|<\\?[\\s\\s]*?\\?>\\n*|<![A-Z][\\s\\S]*?>\\n*|<!\\[CDATA\\[[\\s\\S]*?\\]\\]>\\n*|)[\\s\\S]*?(?:\\n{2,}|$)|<(?!script|pre|style)([a-z][\\w-]*)(?:attribute)*? * ?>(?=\\h*\\n)[\\s\\S]*?(?:\\n{2,}|$)|(?=\\h*\\n)[\\s\\S]*?(?:\\n{2,}|$))",
                     def: /^ {0,3}\[(label)\]: *\n? *<?([^\s>]+)>?(?:(?: +\n? *| *\n *)(title))? *(?:\n+|$)/,
                     table: u,
                     lheading: /^([^\n]+)\n *(=|-){2,} *(?:\n+|$)/,
-                    paragraph: /^([^\n]+(?:\n(?!hr|heading|lheading| {0,3}>|<\/?(?:tag)(?: +|\n|\/?>)|<(?:script|pre|style|!--))[^\n]+)*)/,
-                    text: /^[^\n]+/
-                };
-                v._label = /(?!\s*\])(?:\\[\[\]]|[^\[\]])+/,
-                v._title = /(?:"(?:\\"?|[^"\\])*"|'[^'\n]*(?:\n[^'\n]+)*\n?'|\([^()]*\))/,
-                v.def = c(v.def).replace("label", v._label).replace("title", v._title).getRegex(),
-                v.bullet = /(?:[*+-]|\d+\.)/,
-                v.item = /^( *)(bull) [^\n]*(?:\n(?!\1bull )[^\n]*)*/,
-                v.item = c(v.item, "gm").replace(/bull/g, v.bullet).getRegex(),
-                v.list = c(v.list).replace(/bull/g, v.bullet).replace("hr", "\\n+(?=\\1?(?:(?:- *){3,}|(?:_ *){3,}|(?:\\* *){3,})(?:\\n+|$))").replace("def", "\\n+(?=" + v.def.source + ")").getRegex(),
-                v._tag = "address|article|aside|base|basefont|blockquote|body|caption|center|col|colgroup|dd|details|dialog|dir|div|dl|dt|fieldset|figcaption|figure|footer|form|frame|frameset|h[1-6]|head|header|hr|html|iframe|legend|li|link|main|menu|menuitem|meta|nav|noframes|ol|optgroup|option|p|param|section|source|summary|table|tbody|td|tfoot|th|thead|title|tr|track|ul",
-                v._comment = /<!--(?!-?>)[\s\S]*?-->/,
+                    paragraph: /^([^\n]+(?:\n(?!hr|heading|lheading| {0,3}>|<\ ?(?:tag)(?: +|\n|\ ?>)|<(?:script|pre|style|!--))[^\n]+)*) , text: ^[^\n]+ }; v._label="/(?!\s*\])(?:\\[\[\]]|[^\[\]])+/," v._title="/(?:"(?:\\"?|[^"\\])*"|'[^'\n]*(?:\n[^'\n]+)*\n?'|\([^()]*\))/," v.def="c(v.def).replace("label"," v._label).replace("title", v._title).getregex(), v.bullet="/(?:[*+-]|\d+\.)/," v.item="/^(" *)(bull) [^\n]*(?:\n(?!\1bull )[^\n]*)* "gm").replace( bull g, v.bullet).getregex(), v.list="c(v.list).replace(/bull/g," v.bullet).replace("hr", "\\n+(?="\\1?(?:(?:-" *){3,}|(?:_ *){3,}|(?:\\* *){3,})(?:\\n+|$))").replace("def", )").getregex(), v._tag="address|article|aside|base|basefont|blockquote|body|caption|center|col|colgroup|dd|details|dialog|dir|div|dl|dt|fieldset|figcaption|figure|footer|form|frame|frameset|h[1-6]|head|header|hr|html|iframe|legend|li|link|main|menu|menuitem|meta|nav|noframes|ol|optgroup|option|p|param|section|source|summary|table|tbody|td|tfoot|th|thead|title|tr|track|ul" v._comment="/<!--(?!-?">)[\s\S]*?-->/,
                 v.html = c(v.html, "i").replace("comment", v._comment).replace("tag", v._tag).replace("attribute", / +[a-zA-Z:_][\w.:-]*(?: *= *"[^"\n]*"| *= *'[^'\n]*'| *= *[^\s"'=<>`]+)?/).getRegex(),
                 v.paragraph = c(v.paragraph).replace("hr", v.hr).replace("heading", v.heading).replace("lheading", v.lheading).replace("tag", v._tag).getRegex(),
                 v.blockquote = c(v.blockquote).replace("paragraph", v.paragraph).getRegex(),
@@ -1788,7 +1766,7 @@
                     table: /^ *\|(.+)\n *\|?( *[-:]+[-| :]*)(?:\n((?: *[^>\n ].*(?:\n|$))*)\n*|$)/
                 }),
                 v.pedantic = p({}, v.normal, {
-                    html: c("^ *(?:comment *(?:\\n|\\s*$)|<(tag)[\\s\\S]+?</\\1> *(?:\\n{2,}|\\s*$)|<tag(?:\"[^\"]*\"|'[^']*'|\\s[^'\"/>\\s]*)*?/?> *(?:\\n{2,}|\\s*$))").replace("comment", v._comment).replace(/tag/g, "(?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\\b)\\w+(?!:|[^\\w\\s@]*@)\\b").getRegex(),
+                    html: c("^ *(?:comment *(?:\\n|\\s*$)|<(tag)[\\s\\s]+?< \\1> *(?:\\n{2,}|\\s*$)|<tag(?:\"[^\"]*\"|'[^']*'|\\s[^'\">\\s]*)*?/?> *(?:\\n{2,}|\\s*$))").replace("comment", v._comment).replace(/tag/g, "(?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\\b)\\w+(?!:|[^\\w\\s@]*@)\\b").getRegex(),
                     def: /^ *\[([^\]]+)\]: *<?([^\s>]+)>?(?: +(["(][^\n]+[")]))? *(?:\n+|$)/
                 }),
                 n.rules = v,
@@ -1953,7 +1931,7 @@
                     escape: /^\\([!"#$%&'()*+,\-.\/:;<=>?@\[\]\\^_`{|}~])/,
                     autolink: /^<(scheme:[^\s\x00-\x1f<>]*|email)>/,
                     url: u,
-                    tag: "^comment|^</[a-zA-Z][\\w:-]*\\s*>|^<[a-zA-Z][\\w-]*(?:attribute)*?\\s*/?>|^<\\?[\\s\\S]*?\\?>|^<![a-zA-Z]+\\s[\\s\\S]*?>|^<!\\[CDATA\\[[\\s\\S]*?\\]\\]>",
+                    tag: "^comment|^|^<[a-za-z][\\w-]*(?:attribute)*?\\s* ?>|^<\\?[\\s\\s]*?\\?>|^<![a-zA-Z]+\\s[\\s\\S]*?>|^<!\\[CDATA\\[[\\s\\S]*?\\]\\]>",
                     link: /^!?\[(label)\]\(href(?:\s+(title))?\s*\)/,
                     reflink: /^!?\[(label)\]\[(?!\s*\])((?:\\[\[\]]?|[^\[\]\\])+)\]/,
                     nolink: /^!?\[(?!\s*\])((?:\[[^\[\]]*\]|\\[\[\]]|[^\[\]])*)\](?:\[\])?/,
@@ -1984,34 +1962,7 @@
                 }),
                 g.gfm = p({}, g.normal, {
                     escape: c(g.escape).replace("])", "~|])").getRegex(),
-                    url: c(/^((?:ftp|https?):\/\/|www\.)(?:[a-zA-Z0-9\-]+\.?)+[^\s<]*|^email/).replace("email", g._email).getRegex(),
-                    _backpedal: /(?:[^?!.,:;*_~()&]+|\([^)]*\)|&(?![a-zA-Z0-9]+;$)|[?!.,:;*_~)]+(?!$))+/,
-                    del: /^~~(?=\S)([\s\S]*?\S)~~/,
-                    text: c(g.text).replace("]|", "~]|").replace("|", "|https?://|ftp://|www\\.|[a-zA-Z0-9.!#$%&'*+/=?^_`{\\|}~-]+@|").getRegex()
-                }),
-                g.breaks = p({}, g.gfm, {
-                    br: c(g.br).replace("{2,}", "*").getRegex(),
-                    text: c(g.gfm.text).replace("{2,}", "*").getRegex()
-                }),
-                r.rules = g,
-                r.output = function(e, t, n) {
-                    return new r(t,n).output(e)
-                }
-                ,
-                r.prototype.output = function(e) {
-                    for (var t, n, i, o, a, l = ""; e; )
-                        if (a = this.rules.escape.exec(e))
-                            e = e.substring(a[0].length),
-                            l += a[1];
-                        else if (a = this.rules.autolink.exec(e))
-                            e = e.substring(a[0].length),
-                            "@" === a[2] ? (n = s(this.mangle(a[1])),
-                            i = "mailto:" + n) : (n = s(a[1]),
-                            i = n),
-                            l += this.renderer.link(i, null, n);
-                        else if (this.inLink || !(a = this.rules.url.exec(e))) {
-                            if (a = this.rules.tag.exec(e))
-                                !this.inLink && /^<a /i.test(a[0]) ? this.inLink = !0 : this.inLink && /^<\/a>/i.test(a[0]) && (this.inLink = !1),
+                    url: c(/^((?:ftp|https?):\/\/|www\.)(?:[a-zA-Z0-9\-]+\.?)+[^\s<]*|^email ).replace("email", g._email).getregex(), _backpedal: (?:[^?!.,:;*_~()&]+|\([^)]*\)|&(?![a-za-z0-9]+;$)|[?!.,:;*_~)]+(?!$))+ , del: ^~~(?="\S)([\s\S]*?\S)~~/," text: c(g.text).replace("]|", "~]|").replace("|", "|https?: |ftp: |www\\.|[a-za-z0-9.!#$%&'*+ =?^_`{\\|}~-]+@|").getregex() }), g.breaks="p({}," g.gfm, { br: c(g.br).replace("{2,}", "*").getregex(), c(g.gfm.text).replace("{2,}", "*").getregex() r.rules="g," r.output="function(e," t, n) return new r(t,n).output(e) } r.prototype.output="function(e)" for (var n, i, o, a, l ; e; ) if (a="this.rules.escape.exec(e))" e="e.substring(a[0].length)," +="a[1];" else "@"="==" a[2] ? (n="s(this.mangle(a[1]))," i="mailto:" : null, n); (this.inlink || !(a="this.rules.url.exec(e)))" !this.inlink && ^<a i.test(a[0]) this.inlink="!0" ^<\ a>/i.test(a[0]) && (this.inLink = !1),
                                 e = e.substring(a[0].length),
                                 l += this.options.sanitize ? this.options.sanitizer ? this.options.sanitizer(a[0]) : s(a[0]) : a[0];
                             else if (a = this.rules.link.exec(e))
@@ -2021,7 +1972,7 @@
                                 this.options.pedantic ? (t = /^([^'"]*[^\s])\s+(['"])(.*)\2/.exec(i),
                                 t ? (i = t[1],
                                 o = t[3]) : o = "") : o = a[3] ? a[3].slice(1, -1) : "",
-                                i = i.trim().replace(/^<([\s\S]*)>$/, "$1"),
+                                i = i.trim().replace(/^<([\s\s]*)>$/, "$1"),
                                 l += this.outputLink(a, {
                                     href: r.escapes(i),
                                     title: r.escapes(o)
@@ -2110,16 +2061,16 @@
                 }
                 ,
                 i.prototype.heading = function(e, t, n) {
-                    return this.options.headerIds ? "<h" + t + ' id="' + this.options.headerPrefix + n.toLowerCase().replace(/[^\w]+/g, "-") + '">' + e + "</h" + t + ">\n" : "<h" + t + ">" + e + "</h" + t + ">\n"
+                    return this.options.headerIds ? "<h" + t ' id="' + this.options.headerPrefix + n.toLowerCase().replace(/[^\w]+/g, " -") '">' + e + "</h">\n" : "<h" + t ">" + e + "</h">\n"
                 }
                 ,
                 i.prototype.hr = function() {
-                    return this.options.xhtml ? "<hr/>\n" : "<hr>\n"
+                    return this.options.xhtml ? "<hr>\n" : "<hr>\n"
                 }
                 ,
                 i.prototype.list = function(e, t, n) {
                     var r = t ? "ol" : "ul";
-                    return "<" + r + (t && 1 !== n ? ' start="' + n + '"' : "") + ">\n" + e + "</" + r + ">\n"
+                    return "<" 1 + r (t && !="=" n ? ' start="' + n + '" : "") ">\n" + e + "</">\n"
                 }
                 ,
                 i.prototype.listitem = function(e) {
@@ -2127,7 +2078,7 @@
                 }
                 ,
                 i.prototype.checkbox = function(e) {
-                    return "<input " + (e ? 'checked="" ' : "") + 'disabled="" type="checkbox"' + (this.options.xhtml ? " /" : "") + "> "
+                    return "<input " + (e ? 'checked ' : "") 'disabled type="checkbox" (this.options.xhtml> "
                 }
                 ,
                 i.prototype.paragraph = function(e) {
@@ -2145,7 +2096,7 @@
                 ,
                 i.prototype.tablecell = function(e, t) {
                     var n = t.header ? "th" : "td";
-                    return (t.align ? "<" + n + ' align="' + t.align + '">' : "<" + n + ">") + e + "</" + n + ">\n"
+                    return (t.align ? "<" + n ' align="' + t.align + '">' : "<" + n ">") + e + "</">\n"
                 }
                 ,
                 i.prototype.strong = function(e) {
@@ -2161,7 +2112,7 @@
                 }
                 ,
                 i.prototype.br = function() {
-                    return this.options.xhtml ? "<br/>" : "<br>"
+                    return this.options.xhtml ? "<br>" : "<br>"
                 }
                 ,
                 i.prototype.del = function(e) {
@@ -2184,16 +2135,12 @@
                     } catch (e) {
                         return n
                     }
-                    var i = '<a href="' + s(e) + '"';
-                    return t && (i += ' title="' + t + '"'),
-                    i += ">" + n + "</a>"
+                    var i = '<a href="' + s(e) + '" '; return t && (i +=" title="" '"'), i n "< a>"
                 }
                 ,
                 i.prototype.image = function(e, t, n) {
                     this.options.baseUrl && !b.test(e) && (e = d(this.options.baseUrl, e));
-                    var r = '<img src="' + e + '" alt="' + n + '"';
-                    return t && (r += ' title="' + t + '"'),
-                    r += this.options.xhtml ? "/>" : ">"
+                    var r = '<img src="' + e + '" alt="' + n + '" '; return t && (r +=" title="" '"'), r ? ">" : ">"
                 }
                 ,
                 i.prototype.text = function(e) {
@@ -2403,13 +2350,13 @@
     }
     , function(e, t) {
 		    function aru(index){
-		      return "<img class='emoji aru' src='https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0/img/aru/" + index + ".png'>";
+		      return "<img class="emoji aru" src="https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0/img/aru/" + index + ".png">";
 		    }
 		    function tieba(str){
-		      return "<img class='emoji tieba' src='https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0/img/tieba/" + str + ".png'>";
+		      return "<img class="emoji tieba" src="https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0/img/tieba/" + str + ".png">";
 		    }
 		    function qq(str) {
-		      return "<img class='emoji qq' src='https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0/img/qq/" + str + ".gif'>";
+		      return "<img class="emoji qq" src="https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0/img/qq/" + str + ".gif">";
 		    }
         e.exports = {
 			      aru151: aru(151),
@@ -2874,3 +2821,4 @@
     }
     ])
 });
+</xioveliu@gmail.com></a></"></([\s\s]*)></]*|^email></(?:\\[<></\\?[\\s\\s]*?\\?></[a-za-z][\\w-]*(?:attribute)*?\\s*></(scheme:[^\s\x00-\x1f<></=></tag(?:\"[^\"]*\"|'[^']*'|\\s[^'\"></(tag)[\\s\\s]+?<></(?:script|pre|style|!--))[^\n]+)*)></\></(?!script|pre|style)([a-z][\\w-]*)(?:attribute)*?></\\?[\\s\\s]*?\\?></(script|pre|style)[\\s></":></p>

@@ -75,16 +75,7 @@ var customSearch;
 			if (del >= 50 && scrollTop > 100) {
 				pos = scrollTop;
 				$wrapper.addClass('sub');
-			} else if (del <= -50) {
-				pos = scrollTop;
-				$wrapper.removeClass('sub');
-			}
-		});
-
-		// bind events to every btn
-		const $commentTarget = $('#comments');
-		if ($commentTarget.length) {
-			$comment.click(e => { e.preventDefault(); e.stopPropagation(); scrolltoElement($commentTarget); });
+			} else if (del <= -50) { pos="scrollTop;" $wrapper.removeclass('sub'); } }); bind events to every btn const $commenttarget="$('#comments');" if ($commenttarget.length) $comment.click(e> { e.preventDefault(); e.stopPropagation(); scrolltoElement($commentTarget); });
 		} else $comment.remove();
 
 		const $tocTarget = $('.toc-wrapper');
@@ -291,3 +282,4 @@ var customSearch;
 	});
 
 })(jQuery);
+</=>

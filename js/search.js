@@ -131,10 +131,10 @@ var SearchService = "";
     self.buildResult = function(url, title, digest) {
       var html = "";
       html = "<li>";
-      html +=   "<a class='result' href='" +url+ "'>";
-      html +=     "<span class='title'>" +title+ "</span>";
-      html +=     "<span class='digest'>" +digest+ "</span>";
-      html +=     "<span class='fas fa-chevron-thin-right'></span>";
+      html +=   "<a class="result" href="" +url+ "">";
+      html +=     "<span class="title">" +title+ "</span>";
+      html +=     "<span class="digest">" +digest+ "</span>";
+      html +=     "<span class="fas fa-chevron-thin-right"></span>";
       html +=   "</a>";
       html += "</li>";
       return html;
@@ -195,8 +195,8 @@ var SearchService = "";
     self.addLogo = function(service) {
       var html = "";
       if (self.config.brands[service] && self.config.brands[service].logo) {
-        html += "<a href='" +self.config.brands[service].url+ "' class='" +service+ "'>";
-        html +=    '<img src="' +self.config.imagePath+self.config.brands[service].logo+ '" />';
+        html += "<a href="" +self.config.brands[service].url+ "" class="" +service+ "">";
+        html +=    '<img src="' +self.config.imagePath+self.config.brands[service].logo+ '">';
         html += "</a>";
         self.dom.modal_logo.html(html);
       }
@@ -233,7 +233,7 @@ var SearchService = "";
     self.init();
   };
 
-  var template = '<div id="u-search"><div class="modal"> <header class="modal-header" class="clearfix"><form id="u-search-modal-form" class="u-search-form" name="uSearchModalForm"> <input type="text" id="u-search-modal-input" class="u-search-input" /> <button type="submit" id="u-search-modal-btn-submit" class="u-search-btn-submit"> <span class="fas fa-search"></span> </button></form> <a class="btn-close"> <span class="fas fa-times"></span> </a><div class="modal-loading"><div class="modal-loading-bar"></div></div> </header> <main class="modal-body"><ul class="modal-results modal-ajax-content"></ul> </main> <footer class="modal-footer clearfix"><div class="modal-metadata modal-ajax-content"> <strong class="range"></strong> of <strong class="total"></strong></div><div class="modal-error"></div> <div class="logo"></div> <a class="nav btn-next modal-ajax-content"> <span class="text">NEXT</span> <span class="fas fa-chevron-right"></span> </a> <a class="nav btn-prev modal-ajax-content"> <span class="fas fa-chevron-left"></span> <span class="text">PREV</span> </a> </footer></div><div class="modal-overlay"></div></div>';
+  var template = '<div id="u-search"><div class="modal"> <header class="modal-header"><form id="u-search-modal-form" class="u-search-form" name="uSearchModalForm"> <input type="text" id="u-search-modal-input" class="u-search-input"> <button type="submit" id="u-search-modal-btn-submit" class="u-search-btn-submit"> <span class="fas fa-search"></span> </button></form> <a class="btn-close"> <span class="fas fa-times"></span> </a><div class="modal-loading"><div class="modal-loading-bar"></div></div> </header> <main class="modal-body"><ul class="modal-results modal-ajax-content"></ul> </main> <footer class="modal-footer clearfix"><div class="modal-metadata modal-ajax-content"> <strong class="range"></strong> of <strong class="total"></strong></div><div class="modal-error"></div> <div class="logo"></div> <a class="nav btn-next modal-ajax-content"> <span class="text">NEXT</span> <span class="fas fa-chevron-right"></span> </a> <a class="nav btn-prev modal-ajax-content"> <span class="fas fa-chevron-left"></span> <span class="text">PREV</span> </a> </footer></div><div class="modal-overlay"></div></div>';
 })(jQuery);
 
 var AlgoliaSearch;
@@ -388,15 +388,7 @@ var AzureSearch;
         self.dom.modal_metadata.hide();
       }
 
-      if (self.nav.current+self.nav.currentCount <= self.nav.total) {
-        self.nav.next = self.nav.current+self.nav.currentCount;
-        self.dom.btn_next.show();
-      }
-      else {
-        self.nav.next = -1;
-        self.dom.btn_next.hide();
-      }
-      if (self.nav.current > 1) {
+      if (self.nav.current+self.nav.currentCount <= self.nav.total) { self.nav.next="self.nav.current+self.nav.currentCount;" self.dom.btn_next.show(); } else self.dom.btn_next.hide(); if (self.nav.current> 1) {
         self.nav.prev = self.nav.current-self.config.per_page;
         self.dom.btn_prev.show();
       }
@@ -489,7 +481,7 @@ var BaiduSearch;
       self.dom.input.each(function(index,elem) {
         $(elem).attr('disabled', true);
       });
-      var script = "<script src='http://zhannei.baidu.com/api/customsearch/apiaccept?sid=" +self.config.apiId+ "&v=2.0&callback=customSearch.initBaidu' type='text/javascript' charset='utf-8'></script>";
+      var script = "<script src="http://zhannei.baidu.com/api/customsearch/apiaccept?sid=" +self.config.apiId+ "&v=2.0&callback=customSearch.initBaidu" type="text/javascript" charset="utf-8"></script>";
       self.dom.body.append(script);
     };
 
@@ -778,3 +770,4 @@ var HexoSearch;
   };
 
 })(jQuery);
+</=>
