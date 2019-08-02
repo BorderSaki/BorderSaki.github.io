@@ -285,9 +285,126 @@
         
           
         
+          
+        
       
     
     
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2019/08/02/什麽是棧/">
+      棧的存儲
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    <a href="https://BorderSaki.github.io" rel="nofollow">
+      
+        <img src="https://touhoucannonball.com/assets/img/special/present/icon09.png">
+      
+      <p>BorderSaki</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-08-02</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/noip/數據結構/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>noip&nbsp;/&nbsp;數據結構</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h1 id="什麼是棧"><a href="#什麼是棧" class="headerlink" title="什麼是棧"></a>什麼是棧</h1><blockquote>
+<p>堆疊（英語：stack）又稱為棧或堆疊，是電腦科學中的一種抽象資料類型，只允許在有序的線性資料集合的一端（稱為堆疊頂端，英語：top）進行加入資料（英語：push）和移除數據（英語：pop）的運算。因而按照後進先出（LIFO, Last In First Out）的原理運作。<br>常與另一種有序的線性資料集合佇列相提並論。<br>堆疊常用一維陣列或鏈表來實現<br>——摘自維基百科</p>
+</blockquote>
+<p>本次主要來講講棧的存儲</p>
+<p>棧是一種相當方便的資料結構，實現方式也有很多種，如陣列存儲，鏈表存儲和手寫結構體存儲</p>
+<h1 id="陣列堆疊"><a href="#陣列堆疊" class="headerlink" title="陣列堆疊"></a>陣列堆疊</h1><p>請看代碼實現（摘自<a href="https://zh.wikipedia.org/zh-cn/%E5%A0%86%E6%A0%88#%E9%99%A3%E5%88%97%E5%A0%86%E7%96%8A" target="_blank" rel="noopener">維基百科 - 堆疊#陣列堆疊</a>）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#include &lt;stdbool.h&gt;</span><br><span class="line">#define stack struct Stack</span><br><span class="line">#define STACK_POP_ERR 42</span><br><span class="line"></span><br><span class="line">// 堆疊資料結構 堆疊資料結構</span><br><span class="line">struct Stack &#123;</span><br><span class="line">    int val[10]; // 陣列空間</span><br><span class="line">    int top;     // 堆疊頂端指標（棧頂）</span><br><span class="line">&#125;;</span><br><span class="line">// 檢查堆疊是否為空</span><br><span class="line">bool empty(stack *stk) &#123;</span><br><span class="line">    return stk-&gt;top == 0;</span><br><span class="line">&#125;</span><br><span class="line">// 推入資料</span><br><span class="line">void push(stack *stk, int x) &#123;</span><br><span class="line">    stk-&gt;top = stk-&gt;top + 1;</span><br><span class="line">    stk-&gt;val[stk-&gt;top] = x;</span><br><span class="line">&#125;</span><br><span class="line">// 彈出並返回資料</span><br><span class="line">int pop(stack *stk) &#123;</span><br><span class="line">    if (empty(stk))</span><br><span class="line">        return STACK_POP_ERR; // 不能彈出</span><br><span class="line">    else &#123;</span><br><span class="line">        stk-&gt;top = stk-&gt;top - 1;</span><br><span class="line">        return stk-&gt;val[stk-&gt;top + 1];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">    // 宣告並初始化資料結構空間</span><br><span class="line">    stack stk;</span><br><span class="line">    stk.top = 0;</span><br><span class="line">    // 推入四個</span><br><span class="line">    push(&amp;stk, 3);</span><br><span class="line">    push(&amp;stk, 4);</span><br><span class="line">    push(&amp;stk, 1);</span><br><span class="line">    push(&amp;stk, 9);</span><br><span class="line">    // 彈出三個</span><br><span class="line">    printf(&quot;%d &quot;, pop(&amp;stk));</span><br><span class="line">    printf(&quot;%d &quot;, pop(&amp;stk));</span><br><span class="line">    printf(&quot;%d &quot;, pop(&amp;stk));</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="串列堆疊（鏈表堆疊）"><a href="#串列堆疊（鏈表堆疊）" class="headerlink" title="串列堆疊（鏈表堆疊）"></a>串列堆疊（鏈表堆疊）</h1><p>請看代碼實現（摘自<a href="https://zh.wikipedia.org/zh-cn/%E5%A0%86%E6%A0%88#%E4%B8%B2%E5%88%97%E5%A0%86%E7%96%8A" target="_blank" rel="noopener">維基百科 - 堆疊#串列堆疊</a>）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;conio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line"></span><br><span class="line">#define elemType int							/* 鏈棧元素資料類型，以整型為例 */</span><br><span class="line">#define SNODE_SIZE sizeof (struct sNode)		/* 鏈棧結點空間大小 */</span><br><span class="line"></span><br><span class="line">#define status int	/* 狀態型變數 */</span><br><span class="line">#define OVERFLOW -1	/* 記憶體溢出狀態碼 */</span><br><span class="line">#define ERROR 0		/* 錯誤狀態碼 */</span><br><span class="line">#define OK 1		/* 正確狀態碼 */</span><br><span class="line"></span><br><span class="line">/* 鏈棧結點存儲結構 */</span><br><span class="line">typedef struct sNode &#123;</span><br><span class="line">	elemType data;</span><br><span class="line">	struct sNode *next;</span><br><span class="line">&#125; sNode, *sNodePtr;</span><br><span class="line"></span><br><span class="line">/* 鏈棧存儲結構 */</span><br><span class="line">typedef struct linkStack &#123;</span><br><span class="line">	sNodePtr top; /* 棧頂指針 */</span><br><span class="line">&#125; linkStack;</span><br><span class="line"></span><br><span class="line">/* 初始化 */</span><br><span class="line">/* 操作結果：構造一個帶頭結點的空鏈棧S */</span><br><span class="line">void initStack (linkStack *S) &#123;</span><br><span class="line">	S-&gt;top = (sNodePtr) malloc (SNODE_SIZE); /* 產生頭結點，棧頂指標指向此頭結點 */</span><br><span class="line">	if (!S-&gt;top) /* 記憶體分配失敗 */</span><br><span class="line">		exit (OVERFLOW);</span><br><span class="line">	S-&gt;top-&gt;next = NULL;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/* 銷毀 */</span><br><span class="line">/* 初始條件：鏈棧S已存在。操作結果：銷毀鏈棧S */</span><br><span class="line">void destroyStack (linkStack *S) &#123;</span><br><span class="line">	sNodePtr p, q;</span><br><span class="line">	</span><br><span class="line">	p = S-&gt;top; /* p指向S的頭結點 */</span><br><span class="line">	while (p) &#123;</span><br><span class="line">		q = p-&gt;next; /* q指向p的下一個結點 */</span><br><span class="line">		free (p); /* 回收p指向的結點 */</span><br><span class="line">		p = q; /* p移動到下一個結點 */</span><br><span class="line">	&#125; /* 直到沒有下一個結點 */</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/* 清空 */</span><br><span class="line">/* 初始條件：鏈棧S已存在。操作結果：將S重置為空棧 */</span><br><span class="line">void clearStack (linkStack *S) &#123;</span><br><span class="line">	sNodePtr p, q;</span><br><span class="line">	</span><br><span class="line">	p = S-&gt;top-&gt;next; /* p指向棧的第一個結點 */</span><br><span class="line">	while (p) &#123;</span><br><span class="line">		q = p-&gt;next; /* q指向p的下一個結點 */</span><br><span class="line">		free (p); /* 回收p指向的結點 */</span><br><span class="line">		p = q; /* p移動到下一個結點 */</span><br><span class="line">	&#125;  /* 直到沒有下一個結點 */</span><br><span class="line">	</span><br><span class="line">	S-&gt;top-&gt;next = NULL;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/* 判斷鏈棧是否為空 */</span><br><span class="line">/* 初始條件：鏈棧S已存在。操作結果：若S為空鏈棧，則返回TRUE，否則返回FALSE */</span><br><span class="line">status stackIsEmpty (linkStack *S) &#123;</span><br><span class="line">	return S-&gt;top-&gt;next == NULL;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/* 求鏈棧長度 */</span><br><span class="line">/* 初始條件：鏈棧S已存在。操作結果：返回S中資料元素個數 */</span><br><span class="line">int stackLength (linkStack *S) &#123;</span><br><span class="line">    int i = 0;</span><br><span class="line">    sNodePtr p;</span><br><span class="line">	</span><br><span class="line">	p = S-&gt;top-&gt;next; /* p指向棧的第一個結點 */</span><br><span class="line">	while (p) &#123; /* 未到棧尾 */</span><br><span class="line">		i++;</span><br><span class="line">		p = p-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    return i;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/* 獲取棧頂元素 */</span><br><span class="line">/* 初始條件：鏈棧S已存在。操作結果：當棧不為空時，將棧頂元素其值賦給e並返回OK，否則返回ERROR */</span><br><span class="line">status getTopElem (linkStack *S, elemType *e) &#123;</span><br><span class="line">	sNodePtr p;</span><br><span class="line">	</span><br><span class="line">	if (stackIsEmpty (S))</span><br><span class="line">		return ERROR;</span><br><span class="line">	</span><br><span class="line">	p = S-&gt;top-&gt;next; /* p指向棧的第一個結點 */</span><br><span class="line">	*e = p-&gt;data;</span><br><span class="line">	</span><br><span class="line">	return OK;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/* 入棧 */</span><br><span class="line">/* 操作結果：在S的棧頂插入新的元素e */</span><br><span class="line">status push (linkStack *S, elemType e) &#123;</span><br><span class="line">	sNodePtr p;</span><br><span class="line">	</span><br><span class="line">	p = (sNodePtr) malloc (SNODE_SIZE); /* 產生新結點 */</span><br><span class="line">	if (!p) /* 記憶體分配失敗 */</span><br><span class="line">		exit (OVERFLOW);</span><br><span class="line">	</span><br><span class="line">	p-&gt;data = e;</span><br><span class="line">	p-&gt;next = S-&gt;top-&gt;next; /* 將新結點連結到原棧頂 */</span><br><span class="line">	S-&gt;top-&gt;next = p; /* 棧頂指向新結點 */</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/* 出棧 */</span><br><span class="line">/* 操作結果：刪除S的棧頂元素，並由e返回其值 */</span><br><span class="line">status pop (linkStack *S, elemType *e) &#123;</span><br><span class="line">	sNodePtr p;</span><br><span class="line">	</span><br><span class="line">	if (stackIsEmpty (S))</span><br><span class="line">		return ERROR;</span><br><span class="line">	</span><br><span class="line">	p = S-&gt;top-&gt;next; /* p指向鏈棧的第一個結點 */</span><br><span class="line">	*e = p-&gt;data; /* 取出數據 */</span><br><span class="line">	S-&gt;top-&gt;next = p-&gt;next;</span><br><span class="line">	free (p); /* 刪除該結點 */</span><br><span class="line">	</span><br><span class="line">    if (S-&gt;top == p) /* 棧為空 */</span><br><span class="line">    	S-&gt;top-&gt;next = NULL;</span><br><span class="line">    </span><br><span class="line">    return OK;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/* 列印棧內容 */</span><br><span class="line">/* 初始條件：鏈棧S已存在。操作結果：當棧不為空時，列印棧內容並返回OK，否則返回ERROR */</span><br><span class="line">status printStack (linkStack *S) &#123;</span><br><span class="line">	sNodePtr p;</span><br><span class="line">	</span><br><span class="line">	if (stackIsEmpty (S))</span><br><span class="line">		return ERROR;</span><br><span class="line">	</span><br><span class="line">	p = S-&gt;top-&gt;next;</span><br><span class="line">	while (p) &#123;</span><br><span class="line">		printf (&quot;%d\t&quot;, p-&gt;data);</span><br><span class="line">		p = p-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line">	putchar (&apos;\n&apos;);</span><br><span class="line">	</span><br><span class="line">	return OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="棧的順序存儲（順序棧）"><a href="#棧的順序存儲（順序棧）" class="headerlink" title="棧的順序存儲（順序棧）"></a>棧的順序存儲（順序棧）</h1><p><img src="https://img-blog.csdnimg.cn/20190719205507393.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzE5ODI5NTk1,size_16,color_FFFFFF,t_70" alt="在這裡插入圖片描述"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">//順序棧結構定義</span><br><span class="line">typedef struct</span><br><span class="line">&#123;</span><br><span class="line">	ElemType *base;// 存儲空間基址 </span><br><span class="line">	int top;				   // 棧頂指針 </span><br><span class="line">	int stacksize; 　  // 允許的最大存儲空間以元素為單位</span><br><span class="line">&#125;Stack;</span><br><span class="line">//注：ElemType指資料類型，如：int，float等</span><br><span class="line"></span><br><span class="line">//順序棧的初始化</span><br><span class="line">void InitStack (Stack &amp;S，int maxsize)</span><br><span class="line">&#123;</span><br><span class="line">	// 構造一個最大存儲容量為 maxsize 的空棧 S</span><br><span class="line">	if(maxsize == 0)</span><br><span class="line">		maxsize = MAXLISTSIZE;</span><br><span class="line">	S.base = new ElemType[maxsize];</span><br><span class="line">	if (!S.base) exit(1);//存儲分配失敗</span><br><span class="line">	S.stacksize = maxsize;</span><br><span class="line">	S.top = 0; 　　　　　//空棧中元素個數為0</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//順序棧取棧頂元素</span><br><span class="line">bool GetTop (Stack S, ElemType? e)</span><br><span class="line">&#123;</span><br><span class="line">//若棧不空，則用 e 返回S的棧頂元素，並返回TRUE；否則返回FALSE</span><br><span class="line">	if (S.top == 0)</span><br><span class="line">		return FALSE;</span><br><span class="line">	e = *(S.base + S.top-1);　　//返回非空棧中棧頂元素，也可以寫成 S.base[S.top-1] </span><br><span class="line">	return TRUE;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//順序棧入棧操作</span><br><span class="line">bool Push (Stack &amp;S, ElemType e)</span><br><span class="line">&#123;</span><br><span class="line">	//若棧的存儲空間不滿，則插入元素 e 為新的棧頂元素，</span><br><span class="line">	//並返回 TRUE；否則返回 FALSE</span><br><span class="line">	if (S.top == S.stacksize)　//棧已滿，無法進行插入</span><br><span class="line">		return FALSE;</span><br><span class="line">	*(S.base + S.top) = e;　　//插入新的元素</span><br><span class="line">	++S.top;　　　　//棧頂指標後移，棧頂指標總是指在棧頂元素的後面一個位置上</span><br><span class="line">	return TRUE;   </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//順序棧出棧操作</span><br><span class="line">bool Pop (Stack &amp;S, ElemType &amp;e)</span><br><span class="line">&#123;</span><br><span class="line">	// 若棧不空，則刪除S的棧頂元素，用 e 返回其值,</span><br><span class="line">	// 並返回 TRUE；否則返回 FALSE?</span><br><span class="line">	if (S.top == 0)</span><br><span class="line">		return FALSE;</span><br><span class="line">	e = *(S.base + S.top-1);//返回非空棧中棧頂元素?</span><br><span class="line">	--S.top;//棧頂指針前移</span><br><span class="line">	return TRUE;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><p>棧是一個相當常用的資料結構類型，本文意在説明大家瞭解棧的存儲，棧的應用及解題技巧詳見我的其他文章。</p>
+<p>以上引用文字內容來源廣泛，部分已標注出處，其他不易進行詳細統計，如有侵權請告知，有證必刪。</p>
+
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/堆棧/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>堆棧</a>
+        
+          <a href="/tags/數據結構/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>數據結構</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
       
         
           <div class='post-wrapper'>
@@ -614,6 +731,33 @@
           
           
             
+  <section class='widget category'>
+    
+<header class='material'>
+  <div><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;文章分類</div>
+  
+    <a class="rightBtn"
+    
+      rel="nofollow"
+    
+    
+    href="/categories/"
+    title="categories/">
+    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
+  
+</header>
+
+    <div class='content material'>
+      <ul class="entry">
+        
+          <li><a class="flat-box" title="/categories/noip/" href="/categories/noip/"><div class='name'>noip</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box child" title="/categories/noip/數據結構/" href="/categories/noip/數據結構/"><div class='name'>數據結構</div><div class='badge'>(1)</div></a></li>
+        
+      </ul>
+    </div>
+  </section>
+
 
           
         
@@ -622,6 +766,27 @@
           
           
             
+  <section class='widget tagcloud'>
+    
+<header class='material'>
+  <div><i class="fas fa-fire fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;熱門標籤</div>
+  
+    <a class="rightBtn"
+    
+      rel="nofollow"
+    
+    
+    href="/tags/"
+    title="tags/">
+    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
+  
+</header>
+
+    <div class='content material'>
+      <a href="/tags/堆棧/" style="font-size: 14px; color: #999">堆棧</a> <a href="/tags/數據結構/" style="font-size: 14px; color: #999">數據結構</a>
+    </div>
+  </section>
+
 
           
         
