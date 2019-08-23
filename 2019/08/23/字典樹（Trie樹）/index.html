@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   
-  <title>Archives: 2019/7 | BorderSaki</title>
+  <title>字典樹（Trie樹） | BorderSaki</title>
   
   
 
@@ -62,7 +62,7 @@
   
   
   <div class="cover-wrapper">
-    <cover class='cover  half'>
+    <cover class='cover post half'>
       
         
   <h1 class='title'>生きて</h1>
@@ -277,22 +277,11 @@
   <div class="l_body">
     <div class='body-wrapper'>
       <div class='l_main'>
-	
-		
-  <section class="post-list">
-    
-      
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
   
+
+  
+    <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
+      
 
 
   <section class='meta'>
@@ -301,11 +290,13 @@
     <div class="meta" id="header-meta">
       
         
-  <h2 class="title">
-    <a href="/2019/07/29/始め/">
-      始め
-    </a>
-  </h2>
+  
+    <h1 class="title">
+      <a href="/2019/08/23/字典樹（Trie樹）/">
+        字典樹（Trie樹）
+      </a>
+    </h1>
+  
 
 
       
@@ -331,7 +322,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-07-29</p>
+    <p>2019-08-23</p>
   </a>
 </div>
 
@@ -339,11 +330,32 @@
         
           
             
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/noip/數據結構/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>noip&nbsp;/&nbsp;數據結構</p>
+    </a>
+  </div>
+
 
           
         
           
             
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class='notlink'>
+        <i class="fas fa-eye" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+      </a>
+    </div>
+  
+
 
           
         
@@ -360,30 +372,139 @@
   </section>
 
 
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-    </div>
-    
-  </section>
-</article>
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          <p>在電腦科學中，<strong>trie</strong>，又稱<strong>字首樹</strong>或<strong>字典樹</strong>，是一種有序樹，用於儲存關聯陣列，其中的鍵通常是字串不同，鍵不是直接儲存在節點中，而是由節點在樹中的位置決定。一個節點的所有子孫都有相同的字首，也就是這個節點對應的字串，而根節點對應空字串。一般情況下，不是所有的節點都有對應的值，只有葉子節點和部分內部節點所對應的鍵才有相關的值。</p>
+<p>Trie這個術語來自於re<strong>trie</strong>val。根據詞源學，trie的發明者Edward Fredkin把它讀作 “tree”。但是，其他作者把它讀作”try”。</p>
+<p>在圖示中，鍵標註在節點中，值標註在節點之下。每一個完整的英文單詞對應一個特定的整數。Trie可以看作是一個確定有限狀態自動機，儘管邊上的符號一般是隱含在分支的順序中的。</p>
+<p>鍵不需要被顯式地儲存在節點中。圖示中標註出完整的單詞，只是為了演示trie的原理。</p>
+<p>trie中的鍵通常是字串，但也可以是其它的結構。trie的演算法可以很容易地修改為處理其它結構的有序序列，比如一串數字或者形狀的排列。比如，<strong>bitwise trie</strong>中的鍵是一串位元，可以用於表示整數或者記憶體位址。</p>
+<h2 id="目錄"><a href="#目錄" class="headerlink" title="目錄"></a>目錄</h2><ul>
+<li>1應用</li>
+<li>2實現方式<ul>
+<li>2.1三陣列Trie</li>
+<li>2.2二陣列Trie</li>
+</ul>
+</li>
+<li>3實體</li>
+<li>4參考資料</li>
+</ul>
+<h2 id="應用"><a href="#應用" class="headerlink" title="應用"></a>應用</h2><p>trie樹常用於搜尋提示。如當輸入一個網址，可以自動搜尋出可能的選擇。當沒有完全匹配的搜尋結果，可以返回字首最相似的可能。</p>
+<h2 id="實現方式"><a href="#實現方式" class="headerlink" title="實現方式"></a>實現方式</h2><p>trie樹實際上是一個DFA(确定有限状态自动机)，通常轉移矩陣表示。行表示狀態，列表示輸入字元，（行，列）位置表示轉移狀態。這種方式的查詢效率很高，但由於稀疏的現象嚴重，空間利用效率很低。也可以採用壓縮的儲存方式即連結串列來表示狀態轉移，但由於要線性查詢，會造成效率低下。</p>
+<p>於是人們提出了下面兩種結構。</p>
+<h3 id="三陣列Trie"><a href="#三陣列Trie" class="headerlink" title="三陣列Trie"></a>三陣列Trie</h3><p>三陣列Trie（Triple-Array Trie）結構包括三個陣列：base,next和check.</p>
+<h3 id="二陣列Trie"><a href="#二陣列Trie" class="headerlink" title="二陣列Trie"></a>二陣列Trie</h3><p>二陣列Trie（Double-Array Trie）包含base和check兩個陣列。base陣列的每個元素表示一個Trie節點，即一個狀態；check陣列表示某個狀態的前驅狀態。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line"></span><br><span class="line">#define TREE_WIDTH 256</span><br><span class="line"></span><br><span class="line">#define WORDLENMAX 128</span><br><span class="line"></span><br><span class="line">struct trie_node_st &#123;</span><br><span class="line">        int count;</span><br><span class="line">        int pass; //add a count for the part-include for example &apos;this is&apos; then the &apos;is&apos; is hited two times </span><br><span class="line">        struct trie_node_st *next[TREE_WIDTH];</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">static struct trie_node_st root=&#123;0, 0, &#123;NULL&#125;&#125;;</span><br><span class="line"></span><br><span class="line">static const char *spaces=&quot; \t\n/.\&quot;\&apos;()&quot;;</span><br><span class="line"></span><br><span class="line">void myfree(struct trie_node_st * rt)</span><br><span class="line">&#123;</span><br><span class="line">	for(int i=0; i&lt;TREE_WIDTH; i++)&#123;</span><br><span class="line">		if(rt-&gt;next[i]!=NULL)&#123;</span><br><span class="line">			myfree(rt-&gt;next[i]);</span><br><span class="line">			rt-&gt;next[i] = NULL;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	free(rt);</span><br><span class="line">	return;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">static int</span><br><span class="line">insert (const char *word)</span><br><span class="line">&#123;</span><br><span class="line">        int i;</span><br><span class="line">        struct trie_node_st *curr, *newnode;</span><br><span class="line"></span><br><span class="line">        if (word[0]==&apos;\0&apos;)&#123;</span><br><span class="line">                return 0;</span><br><span class="line">        &#125;</span><br><span class="line">        curr = &amp;root;</span><br><span class="line">        for (i=0; ; ++i) &#123;</span><br><span class="line">                if (word[i] == &apos;\0&apos;) &#123;</span><br><span class="line">                        break;</span><br><span class="line">                &#125;</span><br><span class="line">                curr-&gt;pass++;//count</span><br><span class="line">                if (curr-&gt;next[ word[i] ] == NULL) &#123;</span><br><span class="line">                        newnode = (struct trie_node_st*)malloc(sizeof(struct trie_node_st));</span><br><span class="line">                        memset (newnode, 0, sizeof(struct trie_node_st));</span><br><span class="line">                        curr-&gt;next[ word[i] ] = newnode;</span><br><span class="line">                &#125; </span><br><span class="line">                curr = curr-&gt;next[ word[i] ];</span><br><span class="line">        &#125;</span><br><span class="line">        curr-&gt;count ++;</span><br><span class="line"></span><br><span class="line">        return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">static void</span><br><span class="line">printword (const char *str, int n)</span><br><span class="line">&#123;</span><br><span class="line">        printf (&quot;%s\t%d\n&quot;, str, n);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">static int</span><br><span class="line">do_travel (struct trie_node_st *rootp)</span><br><span class="line">&#123;</span><br><span class="line">        static char worddump[WORDLENMAX+1];</span><br><span class="line">        static int pos=0;</span><br><span class="line">        int i;</span><br><span class="line"></span><br><span class="line">        if (rootp == NULL) &#123;</span><br><span class="line">                return 0;</span><br><span class="line">        &#125;</span><br><span class="line">        if (rootp-&gt;count) &#123;</span><br><span class="line">                worddump[pos]=&apos;\0&apos;;</span><br><span class="line">                printword (worddump, rootp-&gt;count+rootp-&gt;pass);</span><br><span class="line">        &#125;</span><br><span class="line">        for (i=0;i&lt;TREE_WIDTH;++i) &#123;</span><br><span class="line">                worddump[pos++]=i;</span><br><span class="line">                do_travel (rootp-&gt;next[i]);</span><br><span class="line">                pos--;</span><br><span class="line">        &#125;</span><br><span class="line">        return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int</span><br><span class="line">main (void)</span><br><span class="line">&#123;</span><br><span class="line">        char *linebuf=NULL, *line, *word;</span><br><span class="line">        size_t bufsize=0;</span><br><span class="line">        int ret;</span><br><span class="line"></span><br><span class="line">        while (1) &#123;</span><br><span class="line">                ret=getline (&amp;linebuf, &amp;bufsize, stdin);</span><br><span class="line">                if (ret==-1) &#123;</span><br><span class="line">                        break;</span><br><span class="line">                &#125;</span><br><span class="line">                line=linebuf;</span><br><span class="line">                while (1) &#123;</span><br><span class="line">                        word = strsep (&amp;line, spaces);</span><br><span class="line">                        if (word==NULL) &#123;</span><br><span class="line">                                break;</span><br><span class="line">                        &#125;</span><br><span class="line">                        if (word[0]==&apos;\0&apos;) &#123;</span><br><span class="line">                                continue;</span><br><span class="line">                        &#125;</span><br><span class="line">                        insert (word);</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        do_travel (&amp;root);</span><br><span class="line"></span><br><span class="line">        free (linebuf);</span><br><span class="line"></span><br><span class="line">	for(int i=0; i&lt;TREE_WIDTH; i++)&#123;</span><br><span class="line">		if(root.next[i]!=NULL)&#123;</span><br><span class="line">			myfree(root.next[i]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">        exit (0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        </div>
+        
+          
 
-          </div>
+
+  <section class='meta' id="footer-meta">
+    <hr>
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-08-23T19:51:12+08:00">
+  <a class='notlink'>
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>最後更新於 2019年8月23日</p>
+  </a>
+</div>
+
         
       
-    
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/字串/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;<p>字串</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/字串尋找演算/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;<p>字串尋找演算</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+    </div>
   </section>
+
+
+        
+        
+            <div class="prev-next">
+                
+                    <section class="prev">
+                        <span class="art-item-left">
+                            <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一頁</h6>
+                            <h4>
+                                <a href="/2019/08/23/AC自動機/" rel="prev" title="AC自動機">
+                                  
+                                      AC自動機
+                                  
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/字串/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>字串</a> <a class="tag" href="/tags/字串尋找演算/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>字串尋找演算</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>下一頁&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="/2019/08/23/kmp/" rel="prev" title="KMP">
+                                    
+                                        KMP
+                                    
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/字串/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>字串</a> <a class="tag" href="/tags/字串尋找演算/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>字串尋找演算</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+            </div>
+        
+      </section>
+    </article>
   
-    
-    <!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
-    
-    
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
 
   
 
 
-	
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: '字典樹（Trie樹）',
+      tools: true
+    }
+  </script>
+
+
 </div>
 <aside class='l_side'>
   
@@ -456,6 +577,20 @@
           
           
             
+  <section class='widget toc-wrapper'>
+    
+<header class='material'>
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;本文目錄</div>
+  
+    <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div>
+  
+</header>
+
+    <div class='content material'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#目錄"><span class="toc-text">目錄</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#應用"><span class="toc-text">應用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#實現方式"><span class="toc-text">實現方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#三陣列Trie"><span class="toc-text">三陣列Trie</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二陣列Trie"><span class="toc-text">二陣列Trie</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
 
           
         
@@ -695,14 +830,6 @@
   </div>
 </footer>
 <script>setLoadingBarProgress(80);</script>
-
-
-
-
-	<!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
-	
-
-	
 
 
       <script>setLoadingBarProgress(60);</script>
