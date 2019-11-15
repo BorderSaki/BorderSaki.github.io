@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   
-  <title>KMP | BorderSaki</title>
+  <title>Category: CSP2019 | BorderSaki</title>
   
   
 
@@ -62,7 +62,7 @@
   
   
   <div class="cover-wrapper">
-    <cover class='cover post half'>
+    <cover class='cover  half'>
       
         
   <h1 class='title'>生きて</h1>
@@ -276,27 +276,61 @@
 
   <div class="l_body">
     <div class='body-wrapper'>
-      <div class='l_main'>
-  
-
-  
-    <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
       
+<div class='l_main'>
+  
+    
+      
+  <section class="post-list">
+    
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+    
+    
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
 
 
   <section class='meta'>
+    
+      
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.css">
+  <div class="aplayer"
+    data-theme=""
+    data-mini=true 
+    
+    data-mode="circulation"
+    data-server="netease"
+    data-type="song"
+    data-id="22636703"
+    data-volume="0.7">
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/meting@1.1.0/dist/Meting.min.js"></script>
+
+
     
     
     <div class="meta" id="header-meta">
       
         
-  
-    <h1 class="title">
-      <a href="/2019/10/08/kmp/">
-        KMP
-      </a>
-    </h1>
-  
+  <h2 class="title">
+    <a href="/2019/11/15/快速冪和矩陣快速冪/">
+      快速冪和矩陣快速冪
+    </a>
+  </h2>
 
 
       
@@ -322,7 +356,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-10-08</p>
+    <p>2019-11-15</p>
   </a>
 </div>
 
@@ -332,9 +366,9 @@
             
   
   <div class='new-meta-item category'>
-    <a href='/categories/noip/數據結構/' rel="nofollow">
+    <a href='/categories/CSP2019/算法模板/' rel="nofollow">
       <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>noip&nbsp;/&nbsp;數據結構</p>
+      <p>CSP2019&nbsp;/&nbsp;算法模板</p>
     </a>
   </div>
 
@@ -343,19 +377,6 @@
         
           
             
-  
-    <div class="new-meta-item browse busuanzi">
-      <a class='notlink'>
-        <i class="fas fa-eye" aria-hidden="true"></i>
-        <p>
-          <span id="busuanzi_value_page_pv">
-            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
-          </span>
-        </p>
-      </a>
-    </div>
-  
-
 
           
         
@@ -372,275 +393,427 @@
   </section>
 
 
-      <section class="article typo">
-        <div class="article-entry" itemprop="articleBody">
-          <p>在電腦科學中，<strong>Knuth-Morris-Pratt字串尋找演算法</strong>（簡稱為<strong>KMP演算法</strong>）可在一個<strong>主文字字串</strong><code>S</code>內尋找一個<strong>字</strong><code>W</code>的出現位置。此演算法通過運用對這個詞在不匹配時本身就包含足夠的資訊來確定下一個匹配將在哪裡開始的發現，從而避免重新檢查先前匹配的字元。</p>
-<p>這個演算法是由高德納和沃恩·普拉特在1974年構思，同年詹姆斯·H·莫里斯也獨立地設計出該演算法，最終由三人於1977年聯合發表。</p>
-<h3 id="尋找演算法實體"><a href="#尋找演算法實體" class="headerlink" title="尋找演算法實體"></a>尋找演算法實體</h3><p>讓我們用一個實體來演示這個演算法。在任意給定時間，本演算法被兩個整數<code>m</code>和<code>i</code>所決定：</p>
-<ul>
-<li><code>m</code>代表主文字串<code>S</code>內匹配字串<code>W</code>的目前尋找位置，</li>
-<li><code>i</code>代表匹配字串<code>W</code>目前做比較的字元位置。</li>
-</ul>
-<p>圖示如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">             1         2  </span><br><span class="line">m: 01234567890123456789012</span><br><span class="line">S: ABC ABCDAB ABCDABCDABDE</span><br><span class="line">W: ABCDABD</span><br><span class="line">i: 0123456</span><br></pre></td></tr></table></figure>
-
-<p>我們從<code>W</code>與<code>S</code>的開頭比較起。我們比對到<code>S[3](=&#39; &#39;)</code>時，發現<code>W[3](=&#39;D&#39;)</code>與其不符。接著並不是從<code>S[1]</code>比較下去。我們已經知道<code>S[1]~S[3]</code>不與<code>W[0]</code>相合。因此，略過這些字元，令<code>m = 4</code>以及<code>i = 0</code>。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">             1         2  </span><br><span class="line">m: 01234567890123456789012</span><br><span class="line">S: ABC ABCDAB ABCDABCDABDE</span><br><span class="line">W:     ABCDABD</span><br><span class="line">i:     0123456</span><br></pre></td></tr></table></figure>
-
-<p>如上所示，我們檢核了<code>&quot;ABCDAB&quot;</code>這個字串。然而，這與目標仍有些差異。我們可以注意到，<code>&quot;AB&quot;</code>在字串頭尾處出現了兩次。這意味著尾端的<code>&quot;AB&quot;</code>可以作為下次比較的起始點。因此，我們令<code>m = 8, i = 2</code>，繼續比較。圖示如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">             1         2  </span><br><span class="line">m: 01234567890123456789012</span><br><span class="line">S: ABC ABCDAB ABCDABCDABDE</span><br><span class="line">W:         ABCDABD</span><br><span class="line">i:         0123456</span><br></pre></td></tr></table></figure>
-
-<p>於<code>m = 10</code>的地方，又出現不相符的情況。類似地，令<code>m = 11, i = 0</code>繼續比較：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">             1         2  </span><br><span class="line">m: 01234567890123456789012</span><br><span class="line">S: ABC ABCDAB ABCDABCDABDE</span><br><span class="line">W:            ABCDABD</span><br><span class="line">i:            0123456</span><br></pre></td></tr></table></figure>
-
-<p>這時，<code>S[17](=&#39;C&#39;)</code>不與<code>W[6]</code>相同，但是亦出現了兩次<code>&quot;AB&quot;</code>，我們採取一貫的作法，令<code>m = 15</code>和<code>i = 2</code>，繼續搜尋。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">             1         2  </span><br><span class="line">m: 01234567890123456789012</span><br><span class="line">S: ABC ABCDAB ABCDABCDABDE</span><br><span class="line">W:                ABCDABD</span><br><span class="line">i:                0123456</span><br></pre></td></tr></table></figure>
-
-<p>我們找到完全匹配的字串了，其起始位置於<code>S[15]</code>的地方。</p>
-<h2 id="部分匹配表"><a href="#部分匹配表" class="headerlink" title="部分匹配表"></a>部分匹配表</h2><p><strong>部分匹配表</strong>，又稱為<strong>失配函式</strong>，作用是讓演算法無需多次匹配<code>S</code>中的任何字元。能夠實現線性時間搜尋的關鍵是在主串的一些欄位中檢查模式串的<em>初始欄位</em>，我們可以確切地知道在目前位置之前的一個潛在匹配的位置。換句話說，在不錯過任何潛在匹配的情況下，我們”預搜尋”這個模式串本身並將其譯成一個包含所有可能失配的位置對應可以繞過最多無效字元的列表。</p>
-<p>對於<code>W</code>中的任何位置，我們都希望能夠查詢那個位置前（不包括那個位置）有可能的<code>W</code>的最長初始欄位的長度，而不是從<code>W[0]</code>開始失配的整個欄位，這長度就是我們尋找下一個匹配時回退的距離。因此<code>T[i]</code>是<code>W</code>的可能的<em>適當</em>初始欄位同時也是結束於<code>W[i - 1]</code>的子串的最大長度。我們使空串長度是0。當一個失配出現在模式串的最開始，這是特殊情況（無法回退），我們設定<code>T[0] = -1</code>，在下面討論。</p>
-<h3 id="建立表演算法範例"><a href="#建立表演算法範例" class="headerlink" title="建立表演算法範例"></a>建立表演算法範例</h3><p>我們首先考慮例子<code>W = &quot;ABCDABD&quot;</code>。使用這個大致相同的模式串作為主搜尋，我們將會看到它高效的原因。</p>
-<p>首先，我們設定<code>T[0] = -1</code>。為了找到<code>T[1]</code>，我們必須找到一個<code>&quot;A&quot;</code>的適當字尾同時也是<code>W</code>的字首。但<code>&quot;A&quot;</code>沒有字尾，所以我們設定<code>T[1] = 0</code>。類似地，<code>T[2] = 0</code>。</p>
-<p>繼續到<code>T[3]</code>，我們注意到檢查<em>所有</em>字尾有一個捷徑：假設我們發現了一個適當字尾，結束於<code>W[2]</code>、長度為2（最大可能）的字尾，那麼它的第一個字元是<code>W</code>的一個適目前綴。因此一個結束於<code>W[1]</code>的適目前綴，我們已經確定了不可能出現在<code>T[2]</code>。因此在每一層遞推中，這個規則是只有在上一層找到一個長度為m的有效字尾時，才需要檢查給定長度為m+1的字尾（例如，<code>T[x]=m</code>）。</p>
-<p>那麼我們甚至不需要關心具有長度為2的子串，由於上一個情況因長度為1而失配，所以<code>T[3] = 0</code>。</p>
-<p>我們繼續遍歷到<code>W[4]</code>子序列，<code>&#39;A&#39;</code>。同樣的邏輯說明我們需要考慮的最長子串的長度是1，並且在<code>&#39;A&#39;</code>這個情況中有效，回退到我們尋找的目前字元<em>之前</em>的欄位，因此<code>T[4] = 0</code>。</p>
-<p>現在考慮下一個字元<code>W[5]</code>，<code>&#39;B&#39;</code>，我們使用這樣的邏輯：如果我們曾發現一個子模式在上一個字元<code>W[4]</code>之前出現，繼續到目前字元<code>W[5]</code>，那麼在它之前它本身會擁有一個結束於<code>W[4]</code>合適的初始段，與事實相反的是我們已經找到<code>&#39;A&#39;</code>是最早出現在結束於<code>W[4]</code>的合適欄位。因此為了找到<code>W[5]</code>的終止串，我們不需要檢視<code>W[4]</code>。因此<code>T[5] = 1</code>。</p>
-<p>最後，我們看到<code>W[4] = &#39;A&#39;</code>下一個字元是<code>&#39;B&#39;</code>，並且這也確實是<code>W[5]</code>。此外，上面的相同參數說明為了尋找<code>W[6]</code>的欄位，我們不需要向前檢視<code>W[4]</code>，所以我們得出<code>T[6] = 2</code>。</p>
-<p>於是我們得到下面的表：</p>
-<table>
-<thead>
-<tr>
-<th align="center"><code>i</code></th>
-<th>0</th>
-<th>1</th>
-<th>2</th>
-<th>3</th>
-<th>4</th>
-<th>5</th>
-<th>6</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center"><code>W[i]</code></td>
-<td>A</td>
-<td>B</td>
-<td>C</td>
-<td>D</td>
-<td>A</td>
-<td>B</td>
-<td>D</td>
-</tr>
-<tr>
-<td align="center"><code>T[i]</code></td>
-<td>-1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>2</td>
-</tr>
-</tbody></table>
-<p>另一個更複雜和有趣的例子：</p>
-<table>
-<thead>
-<tr>
-<th align="center"><code>i</code></th>
-<th>0</th>
-<th>1</th>
-<th>2</th>
-<th>3</th>
-<th>4</th>
-<th>5</th>
-<th>6</th>
-<th>7</th>
-<th>8</th>
-<th>9</th>
-<th>10</th>
-<th>11</th>
-<th>12</th>
-<th>13</th>
-<th>14</th>
-<th>15</th>
-<th>16</th>
-<th>17</th>
-<th>18</th>
-<th>19</th>
-<th>20</th>
-<th>21</th>
-<th>22</th>
-<th>23</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center"><code>W[i]</code></td>
-<td>P</td>
-<td>A</td>
-<td>R</td>
-<td>T</td>
-<td>I</td>
-<td>C</td>
-<td>I</td>
-<td>P</td>
-<td>A</td>
-<td>T</td>
-<td>E</td>
-<td></td>
-<td>I</td>
-<td>N</td>
-<td></td>
-<td>P</td>
-<td>A</td>
-<td>R</td>
-<td>A</td>
-<td>C</td>
-<td>H</td>
-<td>U</td>
-<td>T</td>
-<td>E</td>
-</tr>
-<tr>
-<td align="center"><code>T[i]</code></td>
-<td>-1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>2</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>2</td>
-<td>3</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-</tbody></table>
-<h3 id="建立表演算法的虛擬碼的解釋"><a href="#建立表演算法的虛擬碼的解釋" class="headerlink" title="建立表演算法的虛擬碼的解釋"></a>建立表演算法的虛擬碼的解釋</h3><p>上面的例子以最少的複雜步驟展示了組織這個表格的一般性方法。這麼做的原理是對整體的搜尋：大多數工作已經在檢測到目前位置的時候做完了，剩下需要做的很少。略微複雜的一點是找到一個共同前字尾。這就需要有一些初始化的程式碼。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">algorithm kmp_table:</span><br><span class="line">    input:</span><br><span class="line">        an array of characters, W (the word to be analyzed)</span><br><span class="line">        an array of integers, T (the table to be filled)</span><br><span class="line">    output:</span><br><span class="line">        nothing (but during operation, it populates the table)</span><br><span class="line"></span><br><span class="line">    define variables:</span><br><span class="line">        an integer, pos ← 2 (the current position we are computing in T)</span><br><span class="line">        an integer, cnd ← 0 (the zero-based index in W of the next character of the current candidate substring)</span><br><span class="line"></span><br><span class="line">    (the first few values are fixed but different from what the algorithm might suggest)</span><br><span class="line">    let T[0] ← -1, T[1] ← 0</span><br><span class="line"></span><br><span class="line">    while pos &lt; length(W) do</span><br><span class="line">        (first case: the substring continues)</span><br><span class="line">        if W[pos - 1] = W[cnd] then</span><br><span class="line">            let cnd ← cnd + 1, T[pos] ← cnd, pos ← pos + 1</span><br><span class="line"></span><br><span class="line">        (second case: it doesn&apos;t, but we can fall back)</span><br><span class="line">        else if cnd &gt; 0 then</span><br><span class="line">            let cnd ← T[cnd]</span><br><span class="line"></span><br><span class="line">        (third case: we have run out of candidates.  Note cnd = 0)</span><br><span class="line">        else</span><br><span class="line">            let T[pos] ← 0, pos ← pos + 1</span><br></pre></td></tr></table></figure>
-
-<h3 id="建立表的演算法的效率"><a href="#建立表的演算法的效率" class="headerlink" title="建立表的演算法的效率"></a>建立表的演算法的效率</h3><p>建立表的演算法的複雜度是<code>O(n)</code>，其中<code>n</code>是<code>W</code>的長度。除去一些初始化的工作，所有工作都是在<code>**while**</code>迴圈中完成的，足夠說明這個迴圈執行用了<code>O(n)</code>的時間，同時還會檢查<code>pos</code>和<code>pos - cnd</code>的大小。在第一個分支里，<code>pos - cnd</code>被保留，而<code>pos</code>與<code>cnd</code>同時遞增，自然，<code>pos</code>增加了。在第二個分支里，<code>cnd</code>被<code>T[cnd]</code>所替代，即以上總是嚴格低於<code>cnd</code>，從而增加了<code>pos - cnd</code>。在第三個分支里，<code>pos</code>增加了，而<code>cnd</code>沒有，所以<code>pos</code>和<code>pos - cnd</code>都增加了。因為<code>pos ≥ pos - cnd</code>，即在每一個階段要麼<code>pos</code>增加，要麼<code>pos</code>的一個下界增加；所以既然此演算法只要有<code>pos = n</code>就終止了，這個迴圈必然最多在<code>2n</code>次疊代後終止，因為<code>pos - cnd</code>從<code>1</code>開始。因此建立表的演算法的複雜度是<code>O(n)</code>。</p>
-
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h1 id="快速冪和矩陣快速冪"><a href="#快速冪和矩陣快速冪" class="headerlink" title="快速冪和矩陣快速冪"></a>快速冪和矩陣快速冪</h1><blockquote>
+<p>a.快速冪<br>b.矩陣快速冪<br>快速冪顧名思義，就是快速算某個數的多少次冪。其時間複雜度為O(log₂N)， 與朴素的O(N)相比效率有了極大的提高。</p>
+</blockquote>
+      
+        <div class="readmore">
+          <a href="/2019/11/15/快速冪和矩陣快速冪/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            閱讀全文
+          </a>
         </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
         
-          
+          <a href="/tags/CSP2019/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>CSP2019</a>
+        
+          <a href="/tags/數論/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>數論</a>
+        
+          <a href="/tags/冪/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>冪</a>
+        
+      </div>
+    
+  </section>
+</article>
 
-
-  <section class='meta' id="footer-meta">
-    <hr>
-    <div class='new-meta-box'>
+          </div>
+        
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-08-23T20:04:34+08:00">
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+      
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.css">
+  <div class="aplayer"
+    data-theme=""
+    data-mini=true 
+    
+    data-mode="circulation"
+    data-server="netease"
+    data-type="song"
+    data-id="22636632"
+    data-volume="0.7">
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/meting@1.1.0/dist/Meting.min.js"></script>
+
+
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2019/11/15/歐幾里得算法/">
+      歐幾里得算法
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    <a href="https://BorderSaki.github.io" rel="nofollow">
+      
+        <img src="https://touhoucannonball.com/assets/img/special/present/icon09.png">
+      
+      <p>BorderSaki</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
   <a class='notlink'>
-    <i class="fas fa-clock" aria-hidden="true"></i>
-    <p>最後更新於 2019年8月23日</p>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-11-15</p>
   </a>
 </div>
 
-        
-      
+          
         
           
+            
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/字串/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;<p>字串</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/字串尋找演算/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;<p>字串尋找演算</p></a></div>
+  <div class='new-meta-item category'>
+    <a href='/categories/CSP2019/算法模板/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>CSP2019&nbsp;/&nbsp;算法模板</p>
+    </a>
+  </div>
 
 
-        
-      
+          
         
           
+            
 
+          
         
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
       
     </div>
   </section>
 
 
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h1 id="歐幾里得算法"><a href="#歐幾里得算法" class="headerlink" title="歐幾里得算法"></a>歐幾里得算法</h1>
+      
+        <div class="readmore">
+          <a href="/2019/11/15/歐幾里得算法/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            閱讀全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
         
+          <a href="/tags/CSP2019/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>CSP2019</a>
         
-            <div class="prev-next">
-                
-                    <section class="prev">
-                        <span class="art-item-left">
-                            <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一頁</h6>
-                            <h4>
-                                <a href="/2019/10/08/什麽是棧/" rel="prev" title="棧的存儲">
-                                  
-                                      棧的存儲
-                                  
-                                </a>
-                            </h4>
-                            
-                                
-                                <h6 class="tags">
-                                    <a class="tag" href="/tags/堆棧/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>堆棧</a> <a class="tag" href="/tags/數據結構/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>數據結構</a>
-                                </h6>
-                            
-                        </span>
-                    </section>
-                
-                
-                    <section class="next">
-                        <span class="art-item-right" aria-hidden="true">
-                            <h6>下一頁&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
-                            <h4>
-                                <a href="/2019/10/08/AC自動機/" rel="prev" title="AC自動機">
-                                    
-                                        AC自動機
-                                    
-                                </a>
-                            </h4>
-                            
-                                
-                                <h6 class="tags">
-                                    <a class="tag" href="/tags/字串/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>字串</a> <a class="tag" href="/tags/字串尋找演算/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>字串尋找演算</a>
-                                </h6>
-                            
-                        </span>
-                    </section>
-                
-            </div>
+          <a href="/tags/數論/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>數論</a>
         
-      </section>
-    </article>
+          <a href="/tags/GCD/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>GCD</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
   
 
+
+  <section class='meta'>
+    
+      
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.css">
+  <div class="aplayer"
+    data-theme=""
+    data-mini=true 
+    
+    data-mode="circulation"
+    data-server="netease"
+    data-type="song"
+    data-id="22636634"
+    data-volume="0.7">
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/meting@1.1.0/dist/Meting.min.js"></script>
+
+
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2019/11/15/篩法求素數/">
+      篩法求素數
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    <a href="https://BorderSaki.github.io" rel="nofollow">
+      
+        <img src="https://touhoucannonball.com/assets/img/special/present/icon09.png">
+      
+      <p>BorderSaki</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-11-15</p>
+  </a>
+</div>
+
+          
+        
+          
+            
   
-    <!-- 显示推荐文章和评论 -->
+  <div class='new-meta-item category'>
+    <a href='/categories/CSP2019/算法模板/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>CSP2019&nbsp;/&nbsp;算法模板</p>
+    </a>
+  </div>
 
 
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h1 id="篩法求素數"><a href="#篩法求素數" class="headerlink" title="篩法求素數"></a>篩法求素數</h1><blockquote>
+<p>a.綫性篩<br>b.埃氏篩<br>當我們需要得到1~N以内的素數時，我們可以用篩的思想，將不需要的扔掉，需要的保留下來</p>
+</blockquote>
+      
+        <div class="readmore">
+          <a href="/2019/11/15/篩法求素數/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            閱讀全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/CSP2019/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>CSP2019</a>
+        
+          <a href="/tags/數論/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>數論</a>
+        
+          <a href="/tags/素數/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>素數</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+      
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.css">
+  <div class="aplayer"
+    data-theme=""
+    data-mini=true 
+    
+    data-mode="circulation"
+    data-server="netease"
+    data-type="song"
+    data-id="22636729"
+    data-volume="0.7">
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/meting@1.1.0/dist/Meting.min.js"></script>
+
+
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2019/11/15/字串尋找演算/">
+      字串尋找演算
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    <a href="https://BorderSaki.github.io" rel="nofollow">
+      
+        <img src="https://touhoucannonball.com/assets/img/special/present/icon09.png">
+      
+      <p>BorderSaki</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-11-15</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/CSP2019/算法模板/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>CSP2019&nbsp;/&nbsp;算法模板</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h1 id="字串尋找演算"><a href="#字串尋找演算" class="headerlink" title="字串尋找演算"></a>字串尋找演算</h1><blockquote>
+<p>KMP算法是一種快速在文本串中找尋模式串的算法</p>
+</blockquote>
+      
+        <div class="readmore">
+          <a href="/2019/11/15/字串尋找演算/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            閱讀全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/CSP2019/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>CSP2019</a>
+        
+          <a href="/tags/字串尋找演算/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>字串尋找演算</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+    
+  </section>
+  
+    
+    <!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
+    
+    
 
   
 
 
+    
   
-
-
-
-
-<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
-
-
-
-  <script>
-    window.subData = {
-      title: 'KMP',
-      tools: true
-    }
-  </script>
-
 
 </div>
 <aside class='l_side'>
@@ -714,20 +887,6 @@
           
           
             
-  <section class='widget toc-wrapper'>
-    
-<header class='material'>
-  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;本文目錄</div>
-  
-    <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div>
-  
-</header>
-
-    <div class='content material'>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#尋找演算法實體"><span class="toc-text">尋找演算法實體</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#部分匹配表"><span class="toc-text">部分匹配表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#建立表演算法範例"><span class="toc-text">建立表演算法範例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#建立表演算法的虛擬碼的解釋"><span class="toc-text">建立表演算法的虛擬碼的解釋</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#建立表的演算法的效率"><span class="toc-text">建立表的演算法的效率</span></a></li></ol>
-    </div>
-  </section>
-
 
           
         
@@ -809,13 +968,13 @@
     <div class='content material'>
       <ul class="entry">
         
-          <li><a class="flat-box" title="/categories/ACGN/" href="/categories/ACGN/"><div class='name'>ACGN</div><div class='badge'>(1)</div></a></li>
+          <li><a class="flat-box" title="/categories/CSP2019/" href="/categories/CSP2019/"><div class='name'>CSP2019</div><div class='badge'>(4)</div></a></li>
         
-          <li><a class="flat-box child" title="/categories/ACGN/邪教/" href="/categories/ACGN/邪教/"><div class='name'>邪教</div><div class='badge'>(1)</div></a></li>
+          <li><a class="flat-box child" title="/categories/CSP2019/算法模板/" href="/categories/CSP2019/算法模板/"><div class='name'>算法模板</div><div class='badge'>(4)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/noip/" href="/categories/noip/"><div class='name'>noip</div><div class='badge'>(4)</div></a></li>
+          <li><a class="flat-box" title="/categories/noip/" href="/categories/noip/"><div class='name'>noip</div><div class='badge'>(1)</div></a></li>
         
-          <li><a class="flat-box child" title="/categories/noip/數據結構/" href="/categories/noip/數據結構/"><div class='name'>數據結構</div><div class='badge'>(4)</div></a></li>
+          <li><a class="flat-box child" title="/categories/noip/數據結構/" href="/categories/noip/數據結構/"><div class='name'>數據結構</div><div class='badge'>(1)</div></a></li>
         
       </ul>
     </div>
@@ -846,7 +1005,7 @@
 </header>
 
     <div class='content material'>
-      <a href="/tags/OI/" style="font-size: 14px; color: #999">OI</a> <a href="/tags/人物介紹/" style="font-size: 14px; color: #999">人物介紹</a> <a href="/tags/堆棧/" style="font-size: 14px; color: #999">堆棧</a> <a href="/tags/字串/" style="font-size: 24px; color: #555">字串</a> <a href="/tags/字串尋找演算/" style="font-size: 24px; color: #555">字串尋找演算</a> <a href="/tags/數據結構/" style="font-size: 14px; color: #999">數據結構</a> <a href="/tags/東方/" style="font-size: 14px; color: #999">東方</a>
+      <a href="/tags/CSP2019/" style="font-size: 24px; color: #555">CSP2019</a> <a href="/tags/GCD/" style="font-size: 14px; color: #999">GCD</a> <a href="/tags/冪/" style="font-size: 14px; color: #999">冪</a> <a href="/tags/堆棧/" style="font-size: 14px; color: #999">堆棧</a> <a href="/tags/字串尋找演算/" style="font-size: 14px; color: #999">字串尋找演算</a> <a href="/tags/數據結構/" style="font-size: 14px; color: #999">數據結構</a> <a href="/tags/數論/" style="font-size: 19px; color: #777">數論</a> <a href="/tags/素數/" style="font-size: 14px; color: #999">素數</a>
     </div>
   </section>
 

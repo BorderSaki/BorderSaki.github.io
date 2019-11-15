@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   
-  <title>AC自動機 | BorderSaki</title>
+  <title>Tag: GCD | BorderSaki</title>
   
   
 
@@ -62,7 +62,7 @@
   
   
   <div class="cover-wrapper">
-    <cover class='cover post half'>
+    <cover class='cover  half'>
       
         
   <h1 class='title'>生きて</h1>
@@ -276,27 +276,55 @@
 
   <div class="l_body">
     <div class='body-wrapper'>
-      <div class='l_main'>
-  
-
-  
-    <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
       
+<div class='l_main'>
+  
+    
+      
+  <section class="post-list">
+    
+      
+        
+          
+        
+      
+    
+    
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
 
 
   <section class='meta'>
+    
+      
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.css">
+  <div class="aplayer"
+    data-theme=""
+    data-mini=true 
+    
+    data-mode="circulation"
+    data-server="netease"
+    data-type="song"
+    data-id="22636632"
+    data-volume="0.7">
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/meting@1.1.0/dist/Meting.min.js"></script>
+
+
     
     
     <div class="meta" id="header-meta">
       
         
-  
-    <h1 class="title">
-      <a href="/2019/10/08/AC自動機/">
-        AC自動機
-      </a>
-    </h1>
-  
+  <h2 class="title">
+    <a href="/2019/11/15/歐幾里得算法/">
+      歐幾里得算法
+    </a>
+  </h2>
 
 
       
@@ -322,7 +350,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-10-08</p>
+    <p>2019-11-15</p>
   </a>
 </div>
 
@@ -332,9 +360,9 @@
             
   
   <div class='new-meta-item category'>
-    <a href='/categories/noip/數據結構/' rel="nofollow">
+    <a href='/categories/CSP2019/算法模板/' rel="nofollow">
       <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>noip&nbsp;/&nbsp;數據結構</p>
+      <p>CSP2019&nbsp;/&nbsp;算法模板</p>
     </a>
   </div>
 
@@ -343,19 +371,6 @@
         
           
             
-  
-    <div class="new-meta-item browse busuanzi">
-      <a class='notlink'>
-        <i class="fas fa-eye" aria-hidden="true"></i>
-        <p>
-          <span id="busuanzi_value_page_pv">
-            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
-          </span>
-        </p>
-      </a>
-    </div>
-  
-
 
           
         
@@ -372,281 +387,48 @@
   </section>
 
 
-      <section class="article typo">
-        <div class="article-entry" itemprop="articleBody">
-          <p>在電腦科學中，<strong>Aho–Corasick演算法</strong>是由Alfred V. Aho和Margaret J.Corasick 發明的字串搜尋演算法，用於在輸入的一串字串中匹配有限組「字典」中的子串。它與普通字串匹配的不同點在於同時與所有字典串進行匹配。演算法均攤情況下具有近似於線性的時間複雜度，約為字串的長度加所有匹配的數量。然而由於需要找到所有匹配數，如果每個子串互相匹配（如字典為a，aa，aaa，aaaa，輸入的字串為aaaa），演算法的時間複雜度會近似於匹配的二次函式。</p>
-<p>該演算法主要依靠構造一個有限狀態機（類似於在一個trie樹)中添加失配指標）來實現。這些額外的失配指標允許在尋找字串失敗時進行回退（例如設Trie樹的單詞cat匹配失敗，但是在Trie樹中存在另一個單詞cart，失配指標就會指向字首ca），轉向某字首的其他分支，免於重複匹配字首，提高演算法效率。</p>
-<p>當一個字典串集合是已知的(例如一個電腦病毒庫), 就可以以離線方式先將自動機求出並儲存以供日後使用，在這種情況下，演算法的時間複雜度為輸入字串長度和匹配數量之和。</p>
-<p>UNIX系統中的一個命令fgrep就是以AC自動機演算法作為基礎實現的。</p>
-<h2 id="樣例"><a href="#樣例" class="headerlink" title="樣例"></a>樣例</h2><p>設一個字典中有如下單詞：{a,ab,bab,bc,bca,c,caa}.</p>
-<p>下方的圖是用AC自動機演算法由該詞典構造而成的一棵Trie樹，其中每個節點都有一條從根節點到它的唯一路徑，代表一個單詞。</p>
-<p>在這種資料結構中，字串的每一個字首都有一個節點來表示（詳見Trie）。所以如果（bca）在字典中，則會存在（bca），（bc），（b）和（）對應的節點。如果該節點表示的字串在字典中存在，則該節點為一個藍色節點，否則為一個灰色節點。</p>
-<p>樹中的黑色有向邊代表起點是終點的「父親」（即起點對應字串增加一個字元可得終點對應字串），例如從（bc）有一條指向（bca）的黑色有向邊。</p>
-<p>樹中的藍色有向邊（字尾節點）代表終點對應字串是起點對應字串的最大嚴格字尾。例如對於一個節點（caa），它的嚴格字尾為（aa），（a）和（），其中在圖中且最長的為（a），所以（caa）有一條指向（a）的藍色有向邊。一個節點的藍色有向邊可以線上性時間內通過重複遍歷節點父親節點的藍色有向邊直到橫移節點（the traversing node）有一個屬於目標節點字首的孩子。</p>
-<p>樹中的綠色有向邊（字典字尾節點）代表終點是起點經過藍色有向邊到達的第一個藍色節點（即字典中存在終點對應字串）。例如（bca）有一條綠色邊連向（a），因為（a）是（bca）通過藍色有向邊到達的第一個藍色節點，路徑為（bca）→（ca）→（a）。綠色有向邊也可以線上性時間內通過遍歷藍色有向邊直到找到一個藍色節點，並用記憶化的方法計算。</p>
-<p>一棵用AC自動機演算法構造的Trie樹。</p>
-<table>
-<thead>
-<tr>
-<th align="center">節點</th>
-<th align="center">是否在字典中</th>
-<th align="center">字尾節點（藍色有向邊）</th>
-<th align="center">字典字尾節點（綠色有向邊）</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">()</td>
-<td align="center">–</td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">(a)</td>
-<td align="center">+</td>
-<td align="center">()</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">(ab)</td>
-<td align="center">+</td>
-<td align="center">(b)</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">(b)</td>
-<td align="center">–</td>
-<td align="center">()</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">(ba)</td>
-<td align="center">–</td>
-<td align="center">(a)</td>
-<td align="center">(a)</td>
-</tr>
-<tr>
-<td align="center">(bab)</td>
-<td align="center">+</td>
-<td align="center">(ab)</td>
-<td align="center">(ab)</td>
-</tr>
-<tr>
-<td align="center">(bc)</td>
-<td align="center">+</td>
-<td align="center">(c)</td>
-<td align="center">(c)</td>
-</tr>
-<tr>
-<td align="center">(bca)</td>
-<td align="center">+</td>
-<td align="center">(ca)</td>
-<td align="center">(a)</td>
-</tr>
-<tr>
-<td align="center">(c)</td>
-<td align="center">+</td>
-<td align="center">()</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">(ca)</td>
-<td align="center">–</td>
-<td align="center">(a)</td>
-<td align="center">(a)</td>
-</tr>
-<tr>
-<td align="center">(caa)</td>
-<td align="center">+</td>
-<td align="center">(a)</td>
-<td align="center">(a)</td>
-</tr>
-</tbody></table>
-<p>在每一步中，演算法先尋找目前節點的「孩子節點」，如果沒有找到匹配，尋找它的後綴節點(suffix)的孩子，如果仍然沒有，接著尋找後綴節點的後綴節點的孩子, 如此循環, 直到根結點，如果到達根節點仍沒有找到匹配則結束。</p>
-<p>當演算法尋找到一個節點，則輸出所有結束在目前位置的字典項。輸出步驟為首先找到該節點的字典字尾，然後用遞迴的方式一直執行到節點沒有字典字首為止。同時，如果該節點為一個字典節點，則輸出該節點本身。</p>
-<p>輸入abccab後演算法的執行步驟如下：</p>
-<table>
-<thead>
-<tr>
-<th align="center">節點</th>
-<th align="center">剩餘字串</th>
-<th align="center">輸出：結束位置</th>
-<th align="center">過渡</th>
-<th align="center">輸出</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">()</td>
-<td align="center">abccab</td>
-<td align="center"></td>
-<td align="center">從根開始</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">(a)</td>
-<td align="center">bccab</td>
-<td align="center">a:1</td>
-<td align="center">()→子節點(a)</td>
-<td align="center">目前節點</td>
-</tr>
-<tr>
-<td align="center">(ab)</td>
-<td align="center">ccab</td>
-<td align="center">ab:2</td>
-<td align="center">(a)→子節點(ab)</td>
-<td align="center">目前節點</td>
-</tr>
-<tr>
-<td align="center">(bc)</td>
-<td align="center">cab</td>
-<td align="center">bc:3, c:3</td>
-<td align="center">(ab)→字尾節點(b)→子節點(bc)</td>
-<td align="center">目前節點，字典字尾</td>
-</tr>
-<tr>
-<td align="center">(c)</td>
-<td align="center">ab</td>
-<td align="center">c:4</td>
-<td align="center">(bc)→字尾節點(c)→字尾節點()→子節點(c)</td>
-<td align="center">目前節點</td>
-</tr>
-<tr>
-<td align="center">(ca)</td>
-<td align="center">b</td>
-<td align="center">a:5</td>
-<td align="center">(c)→(ca)</td>
-<td align="center">字典字尾</td>
-</tr>
-<tr>
-<td align="center">(ab)</td>
-<td align="center"></td>
-<td align="center">ab:6</td>
-<td align="center">(ca)→字尾節點(a)→子節點(ab)</td>
-<td align="center">目前節點</td>
-</tr>
-</tbody></table>
-<h2 id="AC自動機詳講："><a href="#AC自動機詳講：" class="headerlink" title="AC自動機詳講："></a>AC自動機詳講：</h2><p>我們給出5個單詞，say，she，shr，he，her。給定字元串為yasherhs。問多少個單詞在字元串中出現過。</p>
-<h4 id="一、Trie"><a href="#一、Trie" class="headerlink" title="一、Trie"></a>一、Trie</h4><p>首先我們需要建立一棵Trie。但是這棵Trie不是普通的Trie，而是帶有一些特殊的性質。</p>
-<p>首先會有3個重要的指針，分別為p, p-&gt;fail, temp。</p>
-<p>1.指針p，指向當前匹配的字元。若p指向root，表示當前匹配的字元序列為空。（root是Trie入口，沒有實際含義）。</p>
-<p>2.指針p-&gt;fail，p的失敗指針，指向與字元p相同的結點，若沒有，則指向root。</p>
-<p>3.指針temp，測試指針（自己命名的，容易理解！~），在建立fail指針時有尋找與p字元匹配的結點的作用，在掃瞄時作用最大，也最不好理解。</p>
-<p>對於Trie樹中的一個節點，對應一個序列s[1…m]。此時，p指向字元s[m]。若在下一個字元處失配，即p-&gt;next[s[m+1]] == NULL，則由失配指針跳到另一個節點(p-&gt;fail)處，該節點對應的序列為s[i…m]。若繼續失配，則序列依次跳轉直到序列為空或出現匹配。在此過程中，p的值一直在變化，但是p對應節點的字元沒有發生變化。在此過程中，我們觀察可知，最終求得得序列s則為最長公共尾碼。另外，由於這個序列是從root開始到某一節點，則說明這個序列有可能是某些序列的首碼。</p>
-<p>再次討論p指針轉移的意義。如果p指針在某一字元s[m+1]處失配(即p-&gt;next[s[m+1]] == NULL)，則說明沒有單詞s[1…m+1]存在。此時，如果p的失配指針指向root，則說明當前序列的任意尾碼不會是某個單詞的首碼。如果p的失配指針不指向root，則說明序列s[i…m]是某一單詞的首碼，於是跳轉到p的失配指針，以s[i…m]為首碼繼續匹配s[m+1]。</p>
-<p>對於已經得到的序列s[1…m]，由於s[i…m]可能是某單詞的尾碼，s[1…j]可能是某單詞的首碼，所以s[1…m]中可能會出現單詞。此時，p指向已匹配的字元，不能動。於是，令temp = p，然後依次測試s[1…m], s[i…m]是否是單詞。</p>
-<p>構造的Trie為：</p>
-<p><img src="http://www.cppblog.com/images/cppblog_com/mythit/ac1.jpg" alt="img"></p>
-<h4 id="二、構造失敗指針"><a href="#二、構造失敗指針" class="headerlink" title="二、構造失敗指針"></a>二、構造失敗指針</h4><p>用BFS來構造失敗指針，與KMP算法相似的思想。</p>
-<p>首先，root入隊，第1次循環時處理與root相連的字元，也就是各個單詞的第一個字元h和s，因為第一個字元不匹配需要重新匹配，所以第一個字元都指向root（root是Trie入口，沒有實際含義）失敗指針的指向對應下圖中的(1)，(2)兩條虛線；第2次進入循環後，從隊列中先彈出h，接下來p指向h節點的fail指針指向的節點，也就是root；p=p-&gt;fail也就是p=NULL說明匹配序列為空，則把節點e的fail指針指向root表示沒有匹配序列，對應圖-2中的(3)，然後節點e進入隊列；第3次循環時，彈出的第一個節點a的操作與上一步操作的節點e相同，把a的fail指針指向root，對應圖-2中的(4)，併入隊；第4次進入循環時，彈出節點h(圖中左邊那個)，這時操作略有不同。由於p-&gt;next[i]!=NULL(root有h這個兒子節點，圖中右邊那個)，這樣便把左邊那個h節點的失敗指針指向右邊那個root的兒子節點h，對應圖-2中的(5)，然後h入隊。以此類推：在循環結束後，所有的失敗指針就是圖-2中的這種形式。</p>
-<p><img src="http://www.cppblog.com/images/cppblog_com/mythit/ac2.JPG" alt="img"></p>
-<h4 id="三、掃瞄"><a href="#三、掃瞄" class="headerlink" title="三、掃瞄"></a>三、掃瞄</h4><p>構造好Trie和失敗指針後，我們就可以對主串進行掃瞄了。這個過程和KMP算法很類似，但是也有一定的區別，主要是因為AC自動機處理的是多串模式，需要防止遺漏某個單詞，所以引入temp指針。</p>
-<p>匹配過程分兩種情況：(1)當前字元匹配，表示從當前節點沿著樹邊有一條路徑可以到達目標字元，此時只需沿該路徑走向下一個節點繼續匹配即可，目標字元串指針移向下個字元繼續匹配；(2)當前字元不匹配，則去當前節點失敗指針所指向的字元繼續匹配，匹配過程隨著指針指向root結束。重複這2個過程中的任意一個，直到模式串走到結尾為止。</p>
-<p> 對照上圖，看一下模式匹配這個詳細的流程，其中模式串為yasherhs。對於i=0,1。Trie中沒有對應的路徑，故不做任何操作；i=2,3,4時，指針p走到左下節點e。因為節點e的count信息為1，所以cnt+1，並且講節點e的count值設置為-1，表示改單詞已經出現過了，防止重複計數，最後temp指向e節點的失敗指針所指向的節點繼續查找，以此類推，最後temp指向root，退出while循環，這個過程中count增加了2。表示找到了2個單詞she和he。當i=5時，程序進入第5行，p指向其失敗指針的節點，也就是右邊那個e節點，隨後在第6行指向r節點，r節點的count值為1，從而count+1，循環直到temp指向root為止。最後i=6,7時，找不到任何匹配，匹配過程結束。</p>
-
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h1 id="歐幾里得算法"><a href="#歐幾里得算法" class="headerlink" title="歐幾里得算法"></a>歐幾里得算法</h1>
+      
+        <div class="readmore">
+          <a href="/2019/11/15/歐幾里得算法/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            閱讀全文
+          </a>
         </div>
-        
-          
-
-
-  <section class='meta' id="footer-meta">
-    <hr>
-    <div class='new-meta-box'>
-      
-        
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-08-23T20:02:44+08:00">
-  <a class='notlink'>
-    <i class="fas fa-clock" aria-hidden="true"></i>
-    <p>最後更新於 2019年8月23日</p>
-  </a>
-</div>
-
-        
-      
-        
-          
-  
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/字串/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;<p>字串</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/字串尋找演算/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;<p>字串尋找演算</p></a></div>
-
-
-        
-      
-        
-          
-
-        
       
     </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/CSP2019/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>CSP2019</a>
+        
+          <a href="/tags/數論/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>數論</a>
+        
+          <a href="/tags/GCD/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>GCD</a>
+        
+      </div>
+    
   </section>
+</article>
 
-
+          </div>
         
-        
-            <div class="prev-next">
-                
-                    <section class="prev">
-                        <span class="art-item-left">
-                            <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一頁</h6>
-                            <h4>
-                                <a href="/2019/10/08/kmp/" rel="prev" title="KMP">
-                                  
-                                      KMP
-                                  
-                                </a>
-                            </h4>
-                            
-                                
-                                <h6 class="tags">
-                                    <a class="tag" href="/tags/字串/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>字串</a> <a class="tag" href="/tags/字串尋找演算/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>字串尋找演算</a>
-                                </h6>
-                            
-                        </span>
-                    </section>
-                
-                
-                    <section class="next">
-                        <span class="art-item-right" aria-hidden="true">
-                            <h6>下一頁&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
-                            <h4>
-                                <a href="/2019/07/29/始め/" rel="prev" title="始め">
-                                    
-                                        始め
-                                    
-                                </a>
-                            </h4>
-                            
-                        </span>
-                    </section>
-                
-            </div>
-        
-      </section>
-    </article>
+      
+    
+  </section>
   
-
-  
-    <!-- 显示推荐文章和评论 -->
-
-
+    
+    <!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
+    
+    
 
   
 
 
+    
   
-
-
-
-
-<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
-
-
-
-  <script>
-    window.subData = {
-      title: 'AC自動機',
-      tools: true
-    }
-  </script>
-
-
 </div>
 <aside class='l_side'>
   
@@ -719,20 +501,6 @@
           
           
             
-  <section class='widget toc-wrapper'>
-    
-<header class='material'>
-  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;本文目錄</div>
-  
-    <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div>
-  
-</header>
-
-    <div class='content material'>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#樣例"><span class="toc-text">樣例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AC自動機詳講："><span class="toc-text">AC自動機詳講：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#一、Trie"><span class="toc-text">一、Trie</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#二、構造失敗指針"><span class="toc-text">二、構造失敗指針</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#三、掃瞄"><span class="toc-text">三、掃瞄</span></a></li></ol></li></ol></li></ol>
-    </div>
-  </section>
-
 
           
         
@@ -814,13 +582,13 @@
     <div class='content material'>
       <ul class="entry">
         
-          <li><a class="flat-box" title="/categories/ACGN/" href="/categories/ACGN/"><div class='name'>ACGN</div><div class='badge'>(1)</div></a></li>
+          <li><a class="flat-box" title="/categories/CSP2019/" href="/categories/CSP2019/"><div class='name'>CSP2019</div><div class='badge'>(4)</div></a></li>
         
-          <li><a class="flat-box child" title="/categories/ACGN/邪教/" href="/categories/ACGN/邪教/"><div class='name'>邪教</div><div class='badge'>(1)</div></a></li>
+          <li><a class="flat-box child" title="/categories/CSP2019/算法模板/" href="/categories/CSP2019/算法模板/"><div class='name'>算法模板</div><div class='badge'>(4)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/noip/" href="/categories/noip/"><div class='name'>noip</div><div class='badge'>(4)</div></a></li>
+          <li><a class="flat-box" title="/categories/noip/" href="/categories/noip/"><div class='name'>noip</div><div class='badge'>(1)</div></a></li>
         
-          <li><a class="flat-box child" title="/categories/noip/數據結構/" href="/categories/noip/數據結構/"><div class='name'>數據結構</div><div class='badge'>(4)</div></a></li>
+          <li><a class="flat-box child" title="/categories/noip/數據結構/" href="/categories/noip/數據結構/"><div class='name'>數據結構</div><div class='badge'>(1)</div></a></li>
         
       </ul>
     </div>
@@ -851,7 +619,7 @@
 </header>
 
     <div class='content material'>
-      <a href="/tags/OI/" style="font-size: 14px; color: #999">OI</a> <a href="/tags/人物介紹/" style="font-size: 14px; color: #999">人物介紹</a> <a href="/tags/堆棧/" style="font-size: 14px; color: #999">堆棧</a> <a href="/tags/字串/" style="font-size: 24px; color: #555">字串</a> <a href="/tags/字串尋找演算/" style="font-size: 24px; color: #555">字串尋找演算</a> <a href="/tags/數據結構/" style="font-size: 14px; color: #999">數據結構</a> <a href="/tags/東方/" style="font-size: 14px; color: #999">東方</a>
+      <a href="/tags/CSP2019/" style="font-size: 24px; color: #555">CSP2019</a> <a href="/tags/GCD/" style="font-size: 14px; color: #999">GCD</a> <a href="/tags/冪/" style="font-size: 14px; color: #999">冪</a> <a href="/tags/堆棧/" style="font-size: 14px; color: #999">堆棧</a> <a href="/tags/字串尋找演算/" style="font-size: 14px; color: #999">字串尋找演算</a> <a href="/tags/數據結構/" style="font-size: 14px; color: #999">數據結構</a> <a href="/tags/數論/" style="font-size: 19px; color: #777">數論</a> <a href="/tags/素數/" style="font-size: 14px; color: #999">素數</a>
     </div>
   </section>
 
